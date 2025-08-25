@@ -3,26 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <title>REPRESENTACIONES NATURALES</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    /* Header tipo barra: logo a la izquierda, menú a la derecha */
+    /* 🎨 Fondo animado con gradiente */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(270deg, #20c997, #0dcaf0, #28a745);
+      background-size: 600% 600%;
+      animation: moverFondo 15s ease infinite;
+      color: #222;
+    }
+
+    @keyframes moverFondo {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 🔹 Header tipo barra */
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 20px;
+      padding: 15px 30px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: aparecerArriba 1s ease;
     }
+
     header img {
-      height: 60px; /* tamaño del logo */
+      height: 60px;
     }
+
     nav a {
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
       color: #333;
+      transition: color 0.3s;
     }
 
-    /* Video debajo del header, centrado */
+    nav a:hover {
+      color: #20c997;
+    }
+
+    @keyframes aparecerArriba {
+      from { opacity: 0; transform: translateY(-50px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🔹 Secciones */
+    section {
+      padding: 50px 20px;
+      text-align: center;
+      background: rgba(255,255,255,0.85);
+      margin: 20px auto;
+      border-radius: 12px;
+      max-width: 1000px;
+      animation: fadeInUp 1s ease;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🔹 Grilla de productos */
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    /* 🔹 Tarjetas */
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 220px; /* todas las tarjetas del mismo ancho */
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .card h3 {
+      margin: 10px 0;
+    }
+
+    .card p {
+      margin: 5px 0 15px;
+    }
+
+    /* 🔹 Imágenes rectangulares iguales */
+    .card img {
+      width: 180px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+
+    .card img:hover {
+      transform: scale(1.05);
+    }
+
+    /* 🔹 Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      margin-top: 40px;
+    }
+
+    /* 🔹 Video centrado */
     .video-container {
       text-align: center;
       margin: 20px 0;
@@ -30,6 +140,8 @@
     .video-container video {
       max-width: 90%;
       height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -38,9 +150,9 @@
   <header>
     <img src="images.jpg" alt="Logo Representaciones Naturales">
     <nav>
-      <a href="#SOBRE-NOSOTROS">SOBRE NOSOTROS</a>
-      <a href="#PRODUCTOS">PRODUCTOS</a>
-      <a href="#CONTACTO">CONTACTO</a>
+      <a href="#sobre-nosotros">SOBRE NOSOTROS</a>
+      <a href="#productos">PRODUCTOS</a>
+      <a href="#contacto">CONTACTO</a>
     </nav>
   </header>
 
@@ -52,40 +164,45 @@
     </video>
   </div>
 
+  <!-- Sección sobre nosotros -->
   <section id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>
     <p>SOMOS REPRESENTACIONES NATURALES!</p>
   </section>
 
+  <!-- Sección productos -->
   <section id="productos">
     <h2>PRODUCTOS</h2>
     <div class="productos-grid">
       <div class="card">
         <h3>ACEITE DE COCO NEUTRO</h3>
         <p>ACEITE THE COCO.</p>
-        <img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO" style="width:100%; border-radius:8px;">
+        <img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO">
       </div>
       <div class="card">
         <h3>ACEITE DE COCO VIRGEN</h3>
         <p>ACEITE THE COCO.</p>
-        <img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN" style="width:100%; border-radius:8px;">
+        <img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN">
       </div>
       <div class="card">
         <h3>HONEY</h3>
         <p>MIEL HONEY.</p>
-        <img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY" style="width:100%; border-radius:8px;">
+        <img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY">
       </div>
     </div>
   </section>
 
+  <!-- Sección contacto -->
   <section id="contacto">
     <h2>Contacto</h2>
     <p>Escribime a: <a href="mailto:repnaturalesventas@gmail.com">repnaturalesventas@gmail.com</a></p>
     <p>Seguime en Instagram: <a href="https://instagram.com/representacionesnaturales" target="_blank">@representacionesnaturales</a></p>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>©️ 2025 Mi página | Matser </p>
+    <p>©️ 2025 Representaciones Naturales | Matser</p>
   </footer>
 </body>
 </html>
+
