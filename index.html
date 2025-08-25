@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>REPRESENTACIONES NATURALES</title>
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     /* 🎨 Fondo animado con gradiente */
     body {
@@ -12,6 +14,7 @@
       background-size: 600% 600%;
       animation: moverFondo 15s ease infinite;
       color: #222;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
     @keyframes moverFondo {
@@ -31,7 +34,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      animation: aparecerArriba 1s ease;
+      transition: background 0.5s ease;
     }
 
     header img {
@@ -50,9 +53,20 @@
       color: #20c997;
     }
 
-    @keyframes aparecerArriba {
-      from { opacity: 0; transform: translateY(-50px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* 🔘 Botón modo oscuro */
+    .dark-toggle {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      background: #20c997;
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .dark-toggle:hover {
+      background: #0d6efd;
     }
 
     /* 🔹 Secciones */
@@ -63,18 +77,14 @@
       margin: 20px auto;
       border-radius: 12px;
       max-width: 1000px;
-      animation: fadeInUp 1s ease;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
     section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
       color: #222;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to   { opacity: 1; transform: translateY(0); }
+      transition: color 0.5s ease;
     }
 
     /* 🔹 Grilla de productos */
@@ -91,8 +101,8 @@
       padding: 15px;
       border-radius: 15px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      width: 220px; /* todas las tarjetas del mismo ancho */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
+      width: 220px;
     }
 
     .card:hover {
@@ -100,15 +110,10 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     }
 
-    .card h3 {
-      margin: 10px 0;
+    .card h3, .card p {
+      transition: color 0.5s ease;
     }
 
-    .card p {
-      margin: 5px 0 15px;
-    }
-
-    /* 🔹 Imágenes rectangulares iguales */
     .card img {
       width: 180px;
       height: 250px;
@@ -130,6 +135,7 @@
       background: rgba(0,0,0,0.7);
       color: white;
       margin-top: 40px;
+      transition: background 0.5s ease, color 0.5s ease;
     }
 
     /* 🔹 Video centrado */
@@ -143,21 +149,55 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+
+    /* 🌙 DARK MODE */
+    body.dark {
+      background: #121212;
+      color: #f1f1f1;
+    }
+
+    body.dark header {
+      background: rgba(30,30,30,0.95);
+    }
+
+    body.dark nav a {
+      color: #ddd;
+    }
+
+    body.dark section {
+      background: rgba(40,40,40,0.9);
+    }
+
+    body.dark section h2 {
+      color: #f1f1f1;
+    }
+
+    body.dark .card {
+      background: #1e1e1e;
+      color: #f1f1f1;
+      box-shadow: 0 6px 15px rgba(255,255,255,0.1);
+    }
+
+    body.dark footer {
+      background: rgba(255,255,255,0.1);
+      color: #ddd;
+    }
   </style>
 </head>
 <body>
   <!-- Header con logo y menú -->
-  <header>
+  <header data-aos="fade-down">
     <img src="images.jpg" alt="Logo Representaciones Naturales">
     <nav>
       <a href="#sobre-nosotros">SOBRE NOSOTROS</a>
       <a href="#productos">PRODUCTOS</a>
       <a href="#contacto">CONTACTO</a>
     </nav>
+    <button class="dark-toggle" id="toggleDark">🌙 Dark</button>
   </header>
 
   <!-- Video centrado debajo del header -->
-  <div class="video-container">
+  <div class="video-container" data-aos="zoom-in">
     <video controls autoplay loop muted>
       <source src="ACEITE DE COCO.mp4" type="video/mp4">
       Tu navegador no soporta el video.
@@ -165,26 +205,26 @@
   </div>
 
   <!-- Sección sobre nosotros -->
-  <section id="sobre-nosotros">
+  <section id="sobre-nosotros" data-aos="fade-right">
     <h2>Sobre Nosotros</h2>
     <p>SOMOS REPRESENTACIONES NATURALES!</p>
   </section>
 
   <!-- Sección productos -->
-  <section id="productos">
+  <section id="productos" data-aos="fade-up">
     <h2>PRODUCTOS</h2>
     <div class="productos-grid">
-      <div class="card">
+      <div class="card" data-aos="flip-left">
         <h3>ACEITE DE COCO NEUTRO</h3>
         <p>ACEITE THE COCO.</p>
         <img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO">
       </div>
-      <div class="card">
+      <div class="card" data-aos="flip-left" data-aos-delay="150">
         <h3>ACEITE DE COCO VIRGEN</h3>
         <p>ACEITE THE COCO.</p>
         <img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN">
       </div>
-      <div class="card">
+      <div class="card" data-aos="flip-left" data-aos-delay="300">
         <h3>HONEY</h3>
         <p>MIEL HONEY.</p>
         <img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY">
@@ -193,16 +233,36 @@
   </section>
 
   <!-- Sección contacto -->
-  <section id="contacto">
+  <section id="contacto" data-aos="fade-left">
     <h2>Contacto</h2>
     <p>Escribime a: <a href="mailto:repnaturalesventas@gmail.com">repnaturalesventas@gmail.com</a></p>
     <p>Seguime en Instagram: <a href="https://instagram.com/representacionesnaturales" target="_blank">@representacionesnaturales</a></p>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer data-aos="fade-up">
     <p>©️ 2025 Representaciones Naturales | Matser</p>
   </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // 🌙 Dark Mode Toggle
+    const toggleBtn = document.getElementById("toggleDark");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if(document.body.classList.contains("dark")){
+        toggleBtn.textContent = "☀️ Light";
+      } else {
+        toggleBtn.textContent = "🌙 Dark";
+      }
+    });
+  </script>
 </body>
 </html>
 
