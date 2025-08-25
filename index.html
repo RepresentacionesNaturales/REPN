@@ -37,9 +37,7 @@
       transition: background 0.5s ease;
     }
 
-    header img {
-      height: 60px;
-    }
+    header img { height: 60px; }
 
     nav a {
       margin: 0 15px;
@@ -49,9 +47,7 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #20c997;
-    }
+    nav a:hover { color: #20c997; }
 
     /* 🔘 Botón modo oscuro */
     .dark-toggle {
@@ -65,9 +61,7 @@
       transition: all 0.3s;
     }
 
-    .dark-toggle:hover {
-      background: #0d6efd;
-    }
+    .dark-toggle:hover { background: #0d6efd; }
 
     /* 🔹 Secciones */
     section {
@@ -80,29 +74,25 @@
       transition: background 0.5s ease, color 0.5s ease;
     }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #222;
-      transition: color 0.5s ease;
-    }
+    section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
 
-    /* 🔹 Grilla de productos */
+    /* 🔹 Grilla de productos en fila */
     .productos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      justify-items: center;
+      display: flex;          /* Flexbox en fila */
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;        /* Permite bajar a otra fila si es necesario */
     }
 
     /* 🔹 Tarjetas */
     .card {
+      width: 220px;
       background: white;
       padding: 15px;
       border-radius: 15px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
-      width: 220px;
+      text-align: center;
     }
 
     .card:hover {
@@ -110,10 +100,9 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     }
 
-    .card h3, .card p {
-      transition: color 0.5s ease;
-    }
+    .card h3, .card p { transition: color 0.5s ease; }
 
+    /* 🔹 Imágenes rectangulares iguales */
     .card img {
       width: 180px;
       height: 250px;
@@ -124,9 +113,7 @@
       transition: transform 0.3s ease;
     }
 
-    .card img:hover {
-      transform: scale(1.05);
-    }
+    .card img:hover { transform: scale(1.05); }
 
     /* 🔹 Footer */
     footer {
@@ -139,10 +126,7 @@
     }
 
     /* 🔹 Video centrado */
-    .video-container {
-      text-align: center;
-      margin: 20px 0;
-    }
+    .video-container { text-align: center; margin: 20px 0; }
     .video-container video {
       max-width: 90%;
       height: auto;
@@ -151,37 +135,13 @@
     }
 
     /* 🌙 DARK MODE */
-    body.dark {
-      background: #121212;
-      color: #f1f1f1;
-    }
-
-    body.dark header {
-      background: rgba(30,30,30,0.95);
-    }
-
-    body.dark nav a {
-      color: #ddd;
-    }
-
-    body.dark section {
-      background: rgba(40,40,40,0.9);
-    }
-
-    body.dark section h2 {
-      color: #f1f1f1;
-    }
-
-    body.dark .card {
-      background: #1e1e1e;
-      color: #f1f1f1;
-      box-shadow: 0 6px 15px rgba(255,255,255,0.1);
-    }
-
-    body.dark footer {
-      background: rgba(255,255,255,0.1);
-      color: #ddd;
-    }
+    body.dark { background: #121212; color: #f1f1f1; }
+    body.dark header { background: rgba(30,30,30,0.95); }
+    body.dark nav a { color: #ddd; }
+    body.dark section { background: rgba(40,40,40,0.9); }
+    body.dark section h2 { color: #f1f1f1; }
+    body.dark .card { background: #1e1e1e; color: #f1f1f1; box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
+    body.dark footer { background: rgba(255,255,255,0.1); color: #ddd; }
   </style>
 </head>
 <body>
@@ -213,29 +173,29 @@
   <!-- Sección productos -->
   <section id="productos" data-aos="fade-up">
     <h2>PRODUCTOS</h2>
-   <div class="card" data-aos="flip-left">
-  <h3>ACEITE DE COCO NEUTRO</h3>
-  <p>ACEITE THE COCO.</p>
-  <a href="detalle.html?producto=aceite1">
-    <img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO">
-  </a>
-</div>
-
-<div class="card" data-aos="flip-left" data-aos-delay="150">
-  <h3>ACEITE DE COCO VIRGEN</h3>
-  <p>ACEITE THE COCO.</p>
-  <a href="detalle.html?producto=aceite2">
-    <img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN">
-  </a>
-</div>
-
-<div class="card" data-aos="flip-left" data-aos-delay="300">
-  <h3>HONEY</h3>
-  <p>MIEL HONEY.</p>
-  <a href="detalle.html?producto=honey">
-    <img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY">
-  </a>
-</div>
+    <div class="productos-grid">
+      <div class="card" data-aos="flip-left">
+        <h3>ACEITE DE COCO NEUTRO</h3>
+        <p>ACEITE THE COCO.</p>
+        <a href="detalle.html?producto=aceite1">
+          <img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO">
+        </a>
+      </div>
+      <div class="card" data-aos="flip-left" data-aos-delay="150">
+        <h3>ACEITE DE COCO VIRGEN</h3>
+        <p>ACEITE THE COCO.</p>
+        <a href="detalle.html?producto=aceite2">
+          <img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN">
+        </a>
+      </div>
+      <div class="card" data-aos="flip-left" data-aos-delay="300">
+        <h3>HONEY</h3>
+        <p>MIEL HONEY.</p>
+        <a href="detalle.html?producto=honey">
+          <img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY">
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Sección contacto -->
@@ -262,11 +222,7 @@
     const toggleBtn = document.getElementById("toggleDark");
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
-      if(document.body.classList.contains("dark")){
-        toggleBtn.textContent = "☀️ Light";
-      } else {
-        toggleBtn.textContent = "🌙 Dark";
-      }
+      toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
     });
   </script>
 </body>
