@@ -79,14 +79,44 @@ footer {
   font-weight: bold;
 }
 .contact-icons a img {
-  width: 50px;
-  height: 50px;
+  width: 40px;             /* tamaño más pequeño */
+  height: 40px;            /* tamaño más pequeño */
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .contact-icons a img:hover {
-  transform: scale(1.2); /* crece 20% */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* sombra */
+  transform: scale(1.2);   /* crece un 20% al pasar el mouse */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
+
+/* Tooltip */
+.contact-icons a {
+  position: relative;
+  display: inline-block;
+}
+
+.contact-icons a::after {
+  content: attr(data-tooltip);  /* texto del tooltip */
+  position: absolute;
+  bottom: 120%;                  /* encima del logo */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+.contact-icons a:hover::after {
+  opacity: 1;
+}
+
 
