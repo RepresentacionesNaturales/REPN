@@ -52,7 +52,7 @@ h2 {
   height: 250px;       /* alto fijo (más alto que ancho → rectángulo vertical) */
   object-fit: cover;   /* recorta la imagen para que no se deforme */
   border-radius: 10px; /* opcional, esquinas redondeadas */
-  display: block;
+  display: flex;       /* Flexbox en fila */
   margin: 0 auto;      /* centra cada imagen en su columna */
 }
 
