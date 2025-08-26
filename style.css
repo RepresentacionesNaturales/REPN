@@ -15,7 +15,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* 🔹 Header tipo barra */
+/* Header */
 header {
   display: flex;
   align-items: center;
@@ -28,9 +28,7 @@ header {
   z-index: 1000;
   transition: background 0.5s ease;
 }
-
 header img { height: 60px; }
-
 nav a {
   margin: 0 15px;
   text-decoration: none;
@@ -38,10 +36,9 @@ nav a {
   color: #333;
   transition: color 0.3s;
 }
-
 nav a:hover { color: #20c997; }
 
-/* 🔘 Botón modo oscuro */
+/* Botón dark mode */
 .dark-toggle {
   padding: 8px 15px;
   border: none;
@@ -52,10 +49,9 @@ nav a:hover { color: #20c997; }
   color: white;
   transition: all 0.3s;
 }
-
 .dark-toggle:hover { background: #0d6efd; }
 
-/* 🔹 Secciones */
+/* Secciones */
 section {
   padding: 50px 20px;
   text-align: center;
@@ -65,33 +61,28 @@ section {
   max-width: 1000px;
   transition: background 0.5s ease, color 0.5s ease;
 }
-
 section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
 
-/* 🔹 Grilla de productos en fila */
+/* Productos */
 .productos-grid {
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
 }
-
-/* 🔹 Tarjetas */
 .card {
   width: 220px;
   background: white;
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
-
 .card img {
   width: 180px;
   height: 250px;
@@ -101,51 +92,57 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
   margin: 0 auto;
   transition: transform 0.3s ease;
 }
-
 .card img:hover { transform: scale(1.05); }
 
-/* 🔹 Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  margin-top: 40px;
-  transition: background 0.5s ease, color 0.5s ease;
-}
-
-/* 🔹 Video centrado */
-.video-container {
-  text-align: center;
-  margin: 20px 0;
-}
+/* Video */
+.video-container { text-align: center; margin: 20px 0; }
 .video-container video {
   max-width: 90%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  outline: none;
-  pointer-events: none; /* 👉 oculta cursor y evita controles */
+  pointer-events: none; /* Evita controles */
 }
 
-/* 🔹 Logos de contacto */
-.contact-icons {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  align-items: center;
-  margin-top: 20px;
+/* Contacto minimalista */
+#contacto {
+  max-width: 250px;
+  padding: 20px;
+  margin: 50px auto;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  text-align: center;
 }
-.contact-icons img {
+#contacto h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+.contact-icons {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  align-items:center;
+  margin-top:10px;
+}
+#contacto img {
   width: 40px;
   height: 40px;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
-.contact-icons img:hover {
-  transform: scale(1.2);
+#contacto img:hover {
+  transform: scale(1.15);
 }
 
-/* 🌙 DARK MODE */
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+}
+
+/* Dark Mode */
 body.dark { background: #121212; color: #f1f1f1; }
 body.dark header { background: rgba(30,30,30,0.95); }
 body.dark nav a { color: #ddd; }
@@ -153,18 +150,3 @@ body.dark section { background: rgba(40,40,40,0.9); }
 body.dark section h2 { color: #f1f1f1; }
 body.dark .card { background: #1e1e1e; color: #f1f1f1; box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
 body.dark footer { background: rgba(255,255,255,0.1); color: #ddd; }
-#contacto {
-  padding: 15px 10px;   /* mucho más chico que 50px */
-  margin: 10px auto;    /* reduce el espacio exterior */
-  max-width: 400px;     /* opcional, limita el ancho */
-}
-
-#contacto h2 {
-  font-size: 1.2rem;    /* título más chico */
-  margin-bottom: 10px;
-}
-
-#contacto img {
-  width: 35px;          /* achica los logos */
-  height: auto;
-}
