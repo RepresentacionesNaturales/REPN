@@ -140,24 +140,6 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
   33.01%, 100% { opacity: 0; }
 }
 
-/* Video centrado sobre el slider */
-.fondo-slider .video-contenido {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 80%; /* Ajustá según convenga */
-  height: auto;
-  pointer-events: none; /* Para que no interfiera con el slider */
-}
-
-.fondo-slider .video-contenido video {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
 
 /* Fondo con imagen detrás del video */
 .fondo-video {
