@@ -130,87 +130,96 @@
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
+ <script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
 
-    // 🌙 Dark Mode
-    const toggleBtn = document.getElementById("toggleDark");
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
-    });
+  // 🌙 Dark Mode
+  const toggleBtn = document.getElementById("toggleDark");
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
+  });
 
-    // Datos de productos
-    const productos = {
-      aceite1: {
-        titulo: "ACEITE DE COCO NEUTRO",
-        descripcion: "Este es nuestro Aceite de Coco Neutro. Es 100% natural y ideal para cocinar y para uso cosmético.",
-        imagenes: [
-          { src: "WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-2277798734-dieteticas-aceite-de-coco-neutro-the-coco-360-cc-pack-x6-_JM" },
-          { src: "WhatsApp Image 2025-08-21 at 14.51.24 (1).jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-2277798734-dieteticas-aceite-de-coco-neutro-the-coco-360-cc-pack-x6-_JM" }
-        ],
-        videos: ["ACEITE DE COCO.mp4"]
-      },
-      aceite2: {
-        titulo: "ACEITE DE COCO VIRGEN",
-        descripcion: "Aceite de Coco Virgen, ideal para consumo alimenticio y cuidado personal.",
-        imagenes: [
-          { src: "WhatsApp Image 2025-08-20 at 14.28.55.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516499193-dieteticas-aceite-de-coco-virgen-360-cc-the-coco-pack-x6-_JM" },
-          { src: "Virgen RE.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516499193-dieteticas-aceite-de-coco-virgen-360-cc-the-coco-pack-x6-_JM" }
-        ],
-        videos: []
-      },
-      honey: {
-        titulo: "MIEL PURA THE HONEY",
-        descripcion: "Nuestra Miel Honey es 100% natural y de alta calidad.",
-        imagenes: [
-          { src: "WhatsApp Image 2025-08-20 at 14.28.54.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516493789-dieteticas-miel-pura-the-honey-500-gr-pack-x6-_JM#polycard_client=search-nordic&search_layout=stack&position=4&type=item&tracking_id=d1cbf5e8-efb5-4478-9b5e-dafef7125144&wid=MLA1516493789&sid=search" },
-          { src: "Miel RE.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516493789-dieteticas-miel-pura-the-honey-500-gr-pack-x6-_JM#polycard_client=search-nordic&search_layout=stack&position=4&type=item&tracking_id=d1cbf5e8-efb5-4478-9b5e-dafef7125144&wid=MLA1516493789&sid=search" }
-        ],
-        videos: ["video2.mp4"]
-      }
-    };
-
-    // Leer parámetro de URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const productoKey = urlParams.get('producto');
-
-    if (productos[productoKey]) {
-      const producto = productos[productoKey];
-
-      document.getElementById('titulo').textContent = producto.titulo;
-      document.getElementById('descripcion').textContent = producto.descripcion;
-
-      const imagenesDiv = document.getElementById('imagenes');
-      producto.imagenes.forEach(item => {
-        const a = document.createElement('a');
-        a.href = item.link;
-        a.target = "_blank"; // abre Mercado Libre en otra pestaña
-
-        const img = document.createElement('img');
-        img.src = item.src;
-
-        a.appendChild(img);
-        imagenesDiv.appendChild(a);
-      });
-
-      const videosDiv = document.getElementById('videos');
-      producto.videos.forEach(src => {
-        const video = document.createElement('video');
-        video.src = src;
-        video.controls = true;
-        videosDiv.appendChild(video);
-      });
-    } else {
-      document.getElementById('titulo').textContent = "Producto no encontrado";
-      document.getElementById('descripcion').textContent = "Lo sentimos, este producto no existe.";
+  // Datos de productos
+  const productos = {
+    aceite1: {
+      titulo: "ACEITE DE COCO NEUTRO",
+      descripcion: "Este es nuestro Aceite de Coco Neutro. Es 100% natural y ideal para cocinar y para uso cosmético.",
+      imagenes: [
+        { src: "WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-2277798734-dieteticas-aceite-de-coco-neutro-the-coco-360-cc-pack-x6-_JM" },
+        { src: "WhatsApp Image 2025-08-21 at 14.51.24 (1).jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-2277798734-dieteticas-aceite-de-coco-neutro-the-coco-360-cc-pack-x6-_JM" }
+      ],
+      videos: ["ACEITE DE COCO.mp4"]
+    },
+    aceite2: {
+      titulo: "ACEITE DE COCO VIRGEN",
+      descripcion: "Aceite de Coco Virgen, ideal para consumo alimenticio y cuidado personal.",
+      imagenes: [
+        { src: "WhatsApp Image 2025-08-20 at 14.28.55.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516499193-dieteticas-aceite-de-coco-virgen-360-cc-the-coco-pack-x6-_JM" },
+        { src: "Virgen RE.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516499193-dieteticas-aceite-de-coco-virgen-360-cc-the-coco-pack-x6-_JM" }
+      ],
+      videos: []
+    },
+    honey: {
+      titulo: "MIEL PURA THE HONEY",
+      descripcion: "Nuestra Miel Honey es 100% natural y de alta calidad.",
+      imagenes: [
+        { src: "WhatsApp Image 2025-08-20 at 14.28.54.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516493789-dieteticas-miel-pura-the-honey-500-gr-pack-x6-_JM" },
+        { src: "Miel RE.jpeg", link: "https://articulo.mercadolibre.com.ar/MLA-1516493789-dieteticas-miel-pura-the-honey-500-gr-pack-x6-_JM" }
+      ],
+      videos: ["video2.mp4"]
     }
-  </script>
+  };
+
+  // Leer parámetro de URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const productoKey = urlParams.get('producto');
+
+  if (productos[productoKey]) {
+    const producto = productos[productoKey];
+
+    document.getElementById('titulo').textContent = producto.titulo;
+    document.getElementById('descripcion').textContent = producto.descripcion;
+
+    // Imágenes con links a Mercado Libre
+    const imagenesDiv = document.getElementById('imagenes');
+    producto.imagenes.forEach(item => {
+      const a = document.createElement('a');
+      a.href = item.link;
+      a.target = "_blank"; // abre Mercado Libre en otra pestaña
+
+      const img = document.createElement('img');
+      img.src = item.src;
+
+      a.appendChild(img);
+      imagenesDiv.appendChild(a);
+    });
+
+    // Videos sin controles
+    const videosDiv = document.getElementById('videos');
+    producto.videos.forEach(src => {
+      const video = document.createElement('video');
+      video.src = src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.controls = false; // <- no mostrar controles
+      videosDiv.appendChild(video);
+    });
+
+  } else {
+    document.getElementById('titulo').textContent = "Producto no encontrado";
+    document.getElementById('descripcion').textContent = "Lo sentimos, este producto no existe.";
+  }
+</script>
+
 </body>
 </html>
+
 
 
 
