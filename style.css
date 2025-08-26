@@ -144,7 +144,21 @@ footer {
 .contact-icons img:hover {
   transform: scale(1.2);
 }
+#contacto {
+  padding: 15px 10px;   /* mucho más chico que 50px */
+  margin: 10px auto;    /* reduce el espacio exterior */
+  max-width: 400px;     /* opcional, limita el ancho */
+}
 
+#contacto h2 {
+  font-size: 1.2rem;    /* título más chico */
+  margin-bottom: 10px;
+}
+
+#contacto img {
+  width: 35px;          /* achica los logos */
+  height: auto;
+}
 /* 🌙 DARK MODE */
 body.dark { background: #121212; color: #f1f1f1; }
 body.dark header { background: rgba(30,30,30,0.95); }
