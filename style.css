@@ -109,7 +109,7 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
   position: relative;
   width: 100%;
   height: 70vh; /* altura ajustable */
-  background-image: url("fondo.jpg"); /* 👉 poné acá la imagen que quieras de fondo */
+  background-image: url("fondo.jpeg"); /* 👉 poné acá la imagen que quieras de fondo */
   background-size: cover;
   background-position: center;
   display: flex;
