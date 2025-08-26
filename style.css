@@ -46,7 +46,13 @@ h2 {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-
+.video-container video {
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  cursor: none; /* Oculta el cursor sobre el video */
+  pointer-events: none; /* Evita que se pueda clickear o pausar */
+}
 .productos-grid img {
   width: 180px;        /* ancho fijo */
   height: 250px;       /* alto fijo (más alto que ancho → rectángulo vertical) */
