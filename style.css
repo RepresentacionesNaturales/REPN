@@ -1,11 +1,53 @@
-/* 🎨 Fondo animado con gradiente */
+/* ==============================
+   VARIABLES PRINCIPALES
+============================== */
+:root {
+  /* Fondo general */
+  --color-fondo: linear-gradient(270deg, #20c997, #0dcaf0, #28a745);
+  --color-texto: #222;
+
+  /* Header */
+  --color-header-fondo: rgba(255,255,255,0.9);
+  --color-header-texto: #333;
+  --color-header-hover: #20c997;
+
+  /* Botón dark mode */
+  --color-boton-fondo: #20c997;
+  --color-boton-texto: white;
+  --color-boton-hover: #0d6efd;
+
+  /* Secciones */
+  --color-seccion-fondo: rgba(255,255,255,0.85);
+  --color-seccion-texto: #222;
+
+  /* Cards de productos */
+  --color-card-fondo: white;
+  --color-card-texto: #222;
+  --color-card-sombra: rgba(0,0,0,0.15);
+
+  /* Footer */
+  --color-footer-fondo: rgba(0,0,0,0.7);
+  --color-footer-texto: white;
+
+  /* Dark mode */
+  --color-dark-fondo: #121212;
+  --color-dark-texto: #f1f1f1;
+  --color-dark-section-fondo: rgba(40,40,40,0.9);
+  --color-dark-card-fondo: #1e1e1e;
+  --color-dark-card-texto: #f1f1f1;
+  --color-dark-footer-fondo: rgba(255,255,255,0.1);
+}
+
+/* ==============================
+   FONDO ANIMADO
+============================== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(270deg, #20c997, #0dcaf0, #28a745);
+  background: #00FF00 (--color-fondo);
   background-size: 600% 600%;
   animation: moverFondo 15s ease infinite;
-  color: #222;
+  color: var(--color-texto);
   transition: background 0.5s ease, color 0.5s ease;
 }
 
@@ -15,28 +57,32 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Header */
+/* ==============================
+   HEADER
+============================== */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 30px;
-  background: rgba(255,255,255,0.9);
+  background: var(--color-header-fondo);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background 0.5s ease;
 }
+
 header img { height: 60px; }
+
 nav a {
   margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
-  color: #333;
+  color: var(--color-header-texto);
   transition: color 0.3s;
 }
-nav a:hover { color: #20c997; }
+nav a:hover { color: var(--color-header-hover); }
 
 /* Botón dark mode */
 .dark-toggle {
@@ -45,44 +91,52 @@ nav a:hover { color: #20c997; }
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  background: #20c997;
-  color: white;
+  background: var(--color-boton-fondo);
+  color: var(--color-boton-texto);
   transition: all 0.3s;
 }
-.dark-toggle:hover { background: #0d6efd; }
+.dark-toggle:hover { background: var(--color-boton-hover); }
 
-/* Secciones */
+/* ==============================
+   SECCIONES
+============================== */
 section {
   padding: 50px 20px;
   text-align: center;
-  background: rgba(255,255,255,0.85);
+  background: var(--color-seccion-fondo);
   margin: 20px auto;
   border-radius: 12px;
   max-width: 1000px;
   transition: background 0.5s ease, color 0.5s ease;
 }
-section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
+section h2 { font-size: 2rem; margin-bottom: 20px; color: var(--color-seccion-texto); }
 
-/* Productos */
+/* ==============================
+   PRODUCTOS / CARDS
+============================== */
 .productos-grid {
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .card {
   width: 220px;
-  background: white;
+  background: var(--color-card-fondo);
   padding: 15px;
   border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 15px var(--color-card-sombra);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--color-card-texto);
 }
+
 .card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
+
 .card img {
   width: 180px;
   height: 250px;
@@ -94,7 +148,9 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
 }
 .card img:hover { transform: scale(1.05); }
 
-/* Contenedor principal */
+/* ==============================
+   FONDO SLIDER
+============================== */
 .fondo-slider {
   position: relative;
   width: 100%;
@@ -105,32 +161,18 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
   justify-content: center;
 }
 
-/* Contenedor del slider */
-.fondo-slider {
-  position: relative;
-  width: 100%;
-  height: 500px; /* Ajustá la altura que quieras */
-  overflow: hidden;
-}
-
-/* Cada slide ocupa todo el contenedor */
 .fondo-slider .slide {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
-
 .fondo-slider .slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-/* Animación loop */
 .fondo-slider .slide:nth-child(1) { animation: fade 12s infinite; }
 .fondo-slider .slide:nth-child(2) { animation: fade 12s infinite 4s; }
 .fondo-slider .slide:nth-child(3) { animation: fade 12s infinite 8s; }
@@ -140,43 +182,30 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
   33.01%, 100% { opacity: 0; }
 }
 
-
-/* Fondo con imagen detrás del video */
-.fondo-video {
-  position: relative;
-  width: 100%;
-  height: 70vh; /* altura ajustable */
-  background-image: url("fondo.jpeg"); /* 👉 poné acá la imagen que quieras de fondo */
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--color-footer-fondo);
+  color: var(--color-footer-texto);
 }
 
-.fondo-video video {
-  max-width: 80%;  /* video más chico que el ancho total */
-  border-radius: 12px; /* opcional: esquinas redondeadas */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4); /* sombra para destacar */
+/* ==============================
+   DARK MODE
+============================== */
+body.dark {
+  background: var(--color-dark-fondo);
+  color: var(--color-dark-texto);
 }
+body.dark section { background: var(--color-dark-section-fondo); }
+body.dark .card { background: var(--color-dark-card-fondo); color: var(--color-dark-card-texto); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
+body.dark footer { background: var(--color-dark-footer-fondo); }
 
-/* Video ancho completo */
-.video-full {
-  width: 100%;
-  overflow: hidden;
-  margin: 20px 0;
-  border-radius: 12px;
-}
-
-.video-full video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-/* Contacto minimalista */
+/* ==============================
+   CONTACTO
+============================== */
 #contacto {
   max-width: 250px;
   padding: 20px;
@@ -186,10 +215,7 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   text-align: center;
 }
-#contacto h2 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
+#contacto h2 { font-size: 1.2rem; margin-bottom: 15px; }
 .contact-icons {
   display:flex;
   justify-content:center;
@@ -198,27 +224,7 @@ section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
   margin-top:10px;
 }
 #contacto img {
-  width: 30px;
-  height: 30px;
+  width: 30px; height: 30px;
   transition: transform 0.3s ease;
 }
-#contacto img:hover {
-  transform: scale(1.15);
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-}
-
-/* Dark Mode */
-body.dark { background: #121212; color: #f1f1f1; }
-body.dark header { background: rgba(30,30,30,0.95); }
-body.dark nav a { color: #ddd; }
-body.dark section { background: rgba(40,40,40,0.9); }
-body.dark section h2 { color: #f1f1f1; }
-body.dark .card { background: #1e1e1e; color: #f1f1f1; box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
-body.dark footer { background: rgba(255,255,255,0.1); color: #ddd; }
+#contacto img:hover { transform: scale(1.15); }
