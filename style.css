@@ -1,128 +1,155 @@
+/* 🎨 Fondo animado con gradiente */
 body {
-  font-family: 'Copperplate', sans serif;
   margin: 0;
-  line-height: 1.6;
-  background: #00FA9A;  /* Fondo MediumSpringGreen */
-  color: black;         /* Texto negro */
+  font-family: Arial, sans-serif;
+  background: linear-gradient(270deg, #20c997, #0dcaf0, #28a745);
+  background-size: 600% 600%;
+  animation: moverFondo 15s ease infinite;
+  color: #222;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
-header {
-  background: #FFFFFF;   /* Blanco para el encabezado */
-  color: #E0F7FA;        /* Texto claro tipo vanguardista */
-  padding: 1.5rem 0;
-  text-align: center;
-  font-size: 3.0rem;
-  font-weight: 900;
-  letter-spacing: 4px;
-  text-transform: lowercase;
-  font-family: 'Brush script', brush script;
+@keyframes moverFondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
+/* 🔹 Header tipo barra */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.5s ease;
+}
+
+header img { height: 60px; }
 
 nav a {
-  color: #E0F7FA;        /* Links claros */
   margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.3s;
 }
 
-nav a:hover {
-  text-decoration: underline;
+nav a:hover { color: #20c997; }
+
+/* 🔘 Botón modo oscuro */
+.dark-toggle {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #20c997;
+  color: white;
+  transition: all 0.3s;
 }
 
+.dark-toggle:hover { background: #0d6efd; }
+
+/* 🔹 Secciones */
 section {
-  padding: 2rem;
-  max-width: 900px;
-  margin: auto;
-}
-
-h2 {
-  color: #2e6130;         /* Títulos en verde más oscuro */
-  font-size: 2.5rem;
-  font-family: 'Verdana', sans-serif;
-  font-weight: 700;
-  border-bottom: 3px solid #2e6130;
-  padding-bottom: 0.5rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.video-container video {
-  max-width: 90%;
+  padding: 50px 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.85);
+  margin: 20px auto;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  cursor: none; /* Oculta el cursor sobre el video */
-  pointer-events: none; /* Evita que se pueda clickear o pausar */
-}
-.productos-grid img {
-  width: 180px;        /* ancho fijo */
-  height: 250px;       /* alto fijo (más alto que ancho → rectángulo vertical) */
-  object-fit: cover;   /* recorta la imagen para que no se deforme */
-  border-radius: 10px; /* opcional, esquinas redondeadas */
-  display: flex;       /* Flexbox en fila */
-  margin: 0 auto;      /* centra cada imagen en su columna */
+  max-width: 1000px;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
+section h2 { font-size: 2rem; margin-bottom: 20px; color: #222; }
+
+/* 🔹 Grilla de productos en fila */
+.productos-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 🔹 Tarjetas */
 .card {
-  background: #357a38;    /* Tarjetas verde oscuro */
-  color: #E0F7FA;         /* Texto claro */
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
+  width: 220px;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
+  text-align: center;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
+.card img {
+  width: 180px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.card img:hover { transform: scale(1.05); }
+
+/* 🔹 Footer */
 footer {
-  background: #357a38;    /* Footer verde oscuro */
-  color: #E0F7FA;         /* Texto claro */
   text-align: center;
-  padding: 1.5rem;
-  margin-top: 2rem;
-  font-weight: bold;
-}
-.contact-icons a img {
-  width: 40px;             /* tamaño más pequeño */
-  height: 40px;            /* tamaño más pequeño */
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+  padding: 20px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  margin-top: 40px;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
-.contact-icons a img:hover {
-  transform: scale(1.2);   /* crece un 20% al pasar el mouse */
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+/* 🔹 Video centrado */
+.video-container {
+  text-align: center;
+  margin: 20px 0;
+}
+.video-container video {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  outline: none;
+  pointer-events: none; /* 👉 oculta cursor y evita controles */
 }
 
-/* Tooltip */
-.contact-icons a {
-  position: relative;
-  display: inline-block;
+/* 🔹 Logos de contacto */
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+  margin-top: 20px;
+}
+.contact-icons img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s;
+}
+.contact-icons img:hover {
+  transform: scale(1.2);
 }
 
-.contact-icons a::after {
-  content: attr(data-tooltip);  /* texto del tooltip */
-  position: absolute;
-  bottom: 120%;                  /* encima del logo */
-  left: 50%;
-  transform: translateX(-50%);
-  background: #222;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  font-size: 0.8rem;
-  z-index: 10;
-}
-
-.contact-icons a:hover::after {
-  opacity: 1;
-}
-
-
+/* 🌙 DARK MODE */
+body.dark { background: #121212; color: #f1f1f1; }
+body.dark header { background: rgba(30,30,30,0.95); }
+body.dark nav a { color: #ddd; }
+body.dark section { background: rgba(40,40,40,0.9); }
+body.dark section h2 { color: #f1f1f1; }
+body.dark .card { background: #1e1e1e; color: #f1f1f1; box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
+body.dark footer { background: rgba(255,255,255,0.1); color: #ddd; }
