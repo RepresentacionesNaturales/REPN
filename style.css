@@ -207,7 +207,7 @@ body.dark footer { background: var(--color-dark-footer-fondo); }
    CONTACTO
 ============================== */
 footer.main-footer {
-  background-color: #C6E5B1 ; /* verde pastel */
+  background-color: white ; /* blanco */
   color: black;
   padding: 50px 20px;
   border-radius: 15px;
