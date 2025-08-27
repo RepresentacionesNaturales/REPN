@@ -3,7 +3,7 @@
 ============================== */
 :root {
   /* Fondo general */
-  --color-fondo: linear-gradient(270deg, #20c997, #0dcaf0, #28a745);
+  --color-fondo: #228B22;
   --color-texto: #222;
 
   /* Header */
