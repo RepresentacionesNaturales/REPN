@@ -206,25 +206,62 @@ body.dark footer { background: var(--color-dark-footer-fondo); }
 /* ==============================
    CONTACTO
 ============================== */
-#contacto {
-  max-width: 250px;
-  padding: 20px;
-  margin: 10px auto;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+footer.main-footer {
+  background-color: var(--color-boton-fondo); /* verde agua */
+  color: black;
+  padding: 50px 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
   text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: background 0.5s ease, color 0.5s ease;
 }
-#contacto h2 { font-size: 1.2rem; margin-bottom: 15px; }
-.contact-icons {
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  align-items:center;
-  margin-top:10px;
+
+footer.main-footer h5 {
+  font-weight: bold;
+  margin-bottom: 20px;
 }
-#contacto img {
-  width: 30px; height: 30px;
-  transition: transform 0.3s ease;
+
+footer.main-footer a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s;
 }
-#contacto img:hover { transform: scale(1.15); }
+
+footer.main-footer a:hover {
+  color: white;
+}
+
+footer.main-footer .social-icon i {
+  color: black;
+  margin: 0 10px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+footer.main-footer .social-icon:hover i {
+  color: white;
+  transform: scale(1.2);
+}
+
+footer.main-footer .whatsapp-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+
+footer.main-footer .whatsapp-flotante:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media(max-width:768px){
+  footer.main-footer {
+    padding: 30px 15px;
+  }
+  footer.main-footer .social-icon i {
+    margin: 0 5px;
+  }
+}
