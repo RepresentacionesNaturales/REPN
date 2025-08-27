@@ -78,9 +78,13 @@
   <div class="container">
     <div class="row g-4">
 
+    <footer style="background-color:#20c997; color:black; padding:50px 0;">
+  <div class="container">
+    <div class="row g-4">
+
       <!-- Contacto -->
-      <div class="col-lg-4 pt-4 pb-4" style="background-color:rgba(255,255,255,0.1); border-radius:15px;">
-        <h5 class="mb-3" style="color:black; font-weight:bold;">Contactanos</h5>
+      <div class="col-lg-4 col-md-6 pt-4 pb-4" data-aos="fade-up" style="background-color:rgba(255,255,255,0.1); border-radius:15px;">
+        <h5 class="mb-3" style="font-weight:bold;">Contactanos</h5>
 
         <div class="row mb-3 align-items-center">
           <div class="col-1 d-flex justify-content-center">
@@ -120,8 +124,8 @@
       </div>
 
       <!-- Newsletter -->
-      <div class="col-lg-4 pt-4 pb-4" style="background-color:rgba(255,255,255,0.1); border-radius:15px;">
-        <h5 class="mb-3" style="color:black; font-weight:bold;">Suscripción a News</h5>
+      <div class="col-lg-4 col-md-6 pt-4 pb-4" data-aos="fade-up" data-aos-delay="150" style="background-color:rgba(255,255,255,0.1); border-radius:15px;">
+        <h5 class="mb-3" style="font-weight:bold;">Suscripción a News</h5>
         <div class="input-group mt-2">
           <input type="email" name="email" class="form-control" placeholder="Tu correo electrónico..." style="border-radius:8px 0 0 8px;">
           <button class="btn btn-dark" style="border-radius:0 8px 8px 0;">Suscribirse</button>
@@ -129,8 +133,8 @@
       </div>
 
       <!-- Redes sociales -->
-      <div class="col-lg-4 pt-4 pb-4 text-center" style="background-color:rgba(255,255,255,0.1); border-radius:15px;">
-        <h5 class="mb-3" style="color:black; font-weight:bold;">Redes Sociales</h5>
+      <div class="col-lg-4 col-md-12 pt-4 pb-4 text-center" data-aos="fade-up" data-aos-delay="300" style="background-color:rgba(255,255,255,0.1); border-radius:15px;">
+        <h5 class="mb-3" style="font-weight:bold;">Redes Sociales</h5>
         <a href="https://www.instagram.com/representacionesnaturales" target="_blank" aria-label="Instagram" class="social-icon">
           <i class="fa fa-instagram m-2 fa-2x"></i>
         </a>
@@ -146,8 +150,13 @@
   <a href="https://api.whatsapp.com/send?phone=5493413359460&text=Hola! te contacto desde la web," 
      class="whatsapp-materialize boton-flotante text-center flotante d-block" 
      target="_blank">
-    <img src="whatsapp img.avif" style="max-height:60px" loading="lazy" alt="WhatsApp"/>
+    <img src="whatsapp logo.png" style="max-height:60px" loading="lazy" alt="WhatsApp"/>
   </a>
+
+  <!-- Copyright -->
+  <div class="text-center mt-4" style="color:black;">
+    <p>©️ 2025 Representaciones Naturales | Matser</p>
+  </div>
 
   <!-- Estilos internos para hover -->
   <style>
@@ -170,6 +179,13 @@
     .whatsapp-materialize:hover img {
       transform: scale(1.1);
       transition: transform 0.3s;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .col-lg-4, .col-md-6, .col-md-12 {
+        margin-bottom: 15px;
+      }
     }
   </style>
 </footer>
