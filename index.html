@@ -1,16 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <head>
   <meta charset="UTF-8">
   <title>REPRESENTACIONES NATURALES</title>
-  <!-- Vinculación al CSS externo -->
-  <link rel="stylesheet" href="style.css">
-  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* ======================
+       VARIABLES
+    ====================== */
+    :root {
+      --verde-agua: #20c997;
+      --verde-fondo: #C6E5B1;
+      --texto-principal: #222;
+      --texto-footer: #fff;
+      --fondo-footer: rgba(0,0,0,0.7);
+      --card-fondo: #fff;
+      --card-sombra: rgba(0,0,0,0.15);
+      --dark-fondo: #121212;
+      --dark-texto: #f1f1f1;
+      --dark-card: #1e1e1e;
+    }
+
+    /* ======================
+       BODY
+    ====================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--verde-fondo);
+      color: var(--texto-principal);
+      transition: all 0.5s ease;
+    }
+
+    body.dark {
+      background: var(--dark-fondo);
+      color: var(--dark-texto);
+    }
+
+    /* ======================
+       HEADER
+    ====================== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.5s ease;
+    }
+
+    body.dark header {
+      background: rgba(30,30,30,0.95);
+    }
+
+    header img { height: 60px; }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--texto-principal);
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--verde-agua); }
+
+    .dark-toggle {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      background: var(--verde-agua);
+      color: white;
+      transition: all 0.3s;
+    }
+    .dark-toggle:hover { background: #0d6efd; }
+
+    /* ======================
+       SLIDESHOW
+    ====================== */
+    .fondo-slider {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fondo-slider .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .fondo-slider .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .fondo-slider .slide:nth-child(1) { animation: fade 12s infinite; }
+    .fondo-slider .slide:nth-child(2) { animation: fade 12s infinite 4s; }
+    .fondo-slider .slide:nth-child(3) { animation: fade 12s infinite 8s; }
+    @keyframes fade {
+      0%, 33% { opacity: 1; }
+      33.01%, 100% { opacity: 0; }
+    }
+
+    /* ======================
+       SECCIONES
+    ====================== */
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+    }
+    section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* ======================
+       PRODUCTOS GRID
+    ====================== */
+    .productos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: var(--card-fondo);
+      width: 220px;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px var(--card-sombra);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      color: var(--texto-principal);
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+    .card img {
+      width: 180px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .card img:hover { transform: scale(1.05); }
+
+    body.dark .card {
+      background: var(--dark-card);
+      color: var(--dark-texto);
+      box-shadow: 0 6px 15px rgba(255,255,255,0.1);
+    }
+
+    /* ======================
+       FOOTER
+    ====================== */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--fondo-footer);
+      color: var(--texto-footer);
+    }
+    footer a { color: var(--texto-footer); text-decoration: none; }
+    footer a:hover { color: var(--verde-agua); }
+
+    /* WhatsApp flotante */
+    .whatsapp-flotante {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      transition: transform 0.3s;
+    }
+    .whatsapp-flotante:hover { transform: scale(1.1); }
+
+  </style>
 </head>
 <body>
-  <!-- Header con logo y menú -->
+  <!-- Header -->
   <header data-aos="fade-down">
     <img src="images.jpg" alt="Logo Representaciones Naturales">
     <nav>
@@ -21,94 +206,75 @@
     <button class="dark-toggle" id="toggleDark">🌙 Dark</button>
   </header>
 
- <!-- Slideshow de imágenes -->
-<div class="fondo-slider" data-aos="zoom-in">
-  <div class="slide"><img src="PRODUCTOS1.jpeg" alt="Fondo 1"></div>
-  <div class="slide"><img src="PRODUCTOS2.jpeg" alt="Fondo 2"></div>
-  <div class="slide"><img src="PRODUCTOS3.jpeg" alt="Fondo 3"></div>
-</div>
+  <!-- Slideshow -->
+  <div class="fondo-slider" data-aos="zoom-in">
+    <div class="slide"><img src="PRODUCTOS1.jpeg" alt="Fondo 1"></div>
+    <div class="slide"><img src="PRODUCTOS2.jpeg" alt="Fondo 2"></div>
+    <div class="slide"><img src="PRODUCTOS3.jpeg" alt="Fondo 3"></div>
+  </div>
 
-
-
-
-  <!-- Sección sobre nosotros -->
+  <!-- Sobre nosotros -->
   <section id="sobre-nosotros" data-aos="fade-right">
     <h2>Sobre Nosotros</h2>
     <p>SOMOS REPRESENTACIONES NATURALES!</p>
   </section>
 
-  <!-- Sección productos -->
+  <!-- Productos -->
   <section id="productos" data-aos="fade-up">
     <h2>PRODUCTOS</h2>
     <div class="productos-grid">
       <div class="card" data-aos="flip-left">
         <h3>ACEITE DE COCO NEUTRO</h3>
         <p>ACEITE THE COCO.</p>
-        <a href="detalle.html?producto=aceite1">
+        <a href="aceite1.html">
           <img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO">
         </a>
       </div>
       <div class="card" data-aos="flip-left" data-aos-delay="150">
         <h3>ACEITE DE COCO VIRGEN</h3>
         <p>ACEITE THE COCO.</p>
-        <a href="detalle.html?producto=aceite2">
+        <a href="aceite2.html">
           <img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN">
         </a>
       </div>
       <div class="card" data-aos="flip-left" data-aos-delay="300">
         <h3>HONEY</h3>
         <p>MIEL HONEY.</p>
-        <a href="detalle.html?producto=honey">
+        <a href="honey.html">
           <img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY">
         </a>
-        </div>
-      <div class="card" data-aos="flip-left" data-aos-delay="300">
+      </div>
+      <div class="card" data-aos="flip-left" data-aos-delay="450">
         <h3>GHEE</h3>
         <p>THE GHEE.</p>
-        <a href="detalle.html?producto=theghee">
+        <a href="ghee.html">
           <img src="GHEE PORTADA.jpeg" alt="THE GHEE">
         </a>
       </div>
     </div>
   </section>
 
-  <div class="container">
-    <div class="row">
+  <!-- Footer -->
+  <footer id="contacto">
+    <h5>Contactanos</h5>
+    <p><i class="fa fa-phone"></i> <a href="tel:+543413359460">+54 341 335 9460</a></p>
+    <p><i class="fa fa-envelope"></i> <a href="mailto:repnaturalesventas@gmail.com">repnaturalesventas@gmail.com</a></p>
+    <p><i class="fa fa-map-marker"></i> Zelaya 1765 - 2000 Rosario</p>
+    <p><i class="fa fa-clock-o"></i> Lunes a viernes de 8:00 a 15:00 hs</p>
 
-   
-  <div class="container">
-    <div class="row g-4">
-
-    
-  <div class="container">
-    <div class="row g-4">
-
- <footer class="main-footer">
-  <div class="row g-4">
-
-    <!-- Contacto -->
-    <div class="col-lg-4 col-md-6" data-aos="fade-right">
-      <h5>Contactanos</h5>
-      <p><i class="fa fa-phone"></i> <a href="tel:+543413359460">+54 341 335 9460</a></p>
-      <p><i class="fa fa-envelope"></i> <a href="mailto:repnaturalesventas@gmail.com">repnaturalesventas@gmail.com</a></p>
-      <p><i class="fa fa-map-marker"></i> Zelaya 1765 - 2000 Rosario</p>
-      <p><i class="fa fa-clock-o"></i> Lunes a viernes de 8:00 a 15:00 hs</p>
+    <div>
+      <a href="https://www.instagram.com/representacionesnaturales" target="_blank">
+        <i class="fa-brands fa-instagram fa-2x"></i>
+      </a>
+      <a href="https://www.facebook.com/representacionesnaturales" target="_blank">
+        <i class="fa-brands fa-facebook fa-2x"></i>
+      </a>
     </div>
 
-   <!-- Redes sociales -->
-<div class="col-lg-4 col-md-12 text-center" data-aos="fade-left">
-  <h5>Redes Sociales</h5>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/representacionesnaturales" target="_blank" class="social-icon">
-    <i class="fa-brands fa-instagram fa-2x"></i>
-  </a>
-
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/representacionesnaturales" target="_blank" class="social-icon">
-    <i class="fa-brands fa-facebook fa-2x"></i>
-  </a>
-</div>
+    <div class="mt-3">
+      <p>©️ 2025 Representaciones Naturales | Matser</p>
+    </div>
+  </footer>
 
   <!-- WhatsApp flotante -->
   <a href="https://api.whatsapp.com/send?phone=5493413359460&text=Hola! te contacto desde la web," 
@@ -116,21 +282,11 @@
     <img src="Whatsapp logo.png" alt="WhatsApp" style="max-height:60px;">
   </a>
 
-  <!-- Copyright -->
-  <div class="mt-4 text-center" style="color:black;" data-aos="fade-up" data-aos-delay="200">
-    <p>©️ 2025 Representaciones Naturales | Matser</p>
-  </div>
-</footer>
-
-
-
-
-  <!-- AOS JS -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
 
-    // 🌙 Dark Mode Toggle
     const toggleBtn = document.getElementById("toggleDark");
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
