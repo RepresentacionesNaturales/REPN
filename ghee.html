@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Manteca Clarificada The Ghee</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    .contenido {
+      max-width: 900px;
+      margin: auto;
+      background: #C6E5B1;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .imagenes {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .imagenes img {
+      width: 250px;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .imagenes img:hover { transform: scale(1.05); }
+    .video-full video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    a.volver {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background: #20c997;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    a.volver:hover { background: #0d6efd; color: white; }
+    .btn-ml {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 20px;
+      background: #ffce00;
+      color: black;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .btn-ml:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <header data-aos="fade-down">
+    <img src="images.jpg" alt="Logo Representaciones Naturales">
+    <nav>
+      <a href="index.html">INICIO</a>
+      <a href="index.html#productos">PRODUCTOS</a>
+      <a href="index.html#contacto">CONTACTO</a>
+    </nav>
+    <button class="dark-toggle" id="toggleDark">🌙 Dark</button>
+  </header>
+
+  <div class="contenido" data-aos="fade-up">
+    <h1>Manteca Clarificada The Ghee</h1>
+
+    <div class="imagenes" data-aos="fade-right">
+      <a href="https://articulo.mercadolibre.com.ar/MLA-2282750742-dieteticas-manteca-clarificada-the-ghee-300-gr-pack-x6-_JM" target="_blank">
+        <img src="GHEE PORTADA.jpeg" alt="Ghee">
+      </a>
+      <a href="https://articulo.mercadolibre.com.ar/MLA-2282750742-dieteticas-manteca-clarificada-the-ghee-300-gr-pack-x6-_JM" target="_blank">
+        <img src="ghee 2.jpeg" alt="Ghee">
+      </a>
+    </div>
+
+    <div class="video-full" data-aos="fade-left">
+      <video src="video.mp4" autoplay loop muted playsinline></video>
+    </div>
+
+    <p data-aos="fade-up">
+      Nuestra Manteca clarificada es 100% natural y de alta calidad.
+    </p>
+
+    <a href="https://articulo.mercadolibre.com.ar/MLA-2282750742-dieteticas-manteca-clarificada-the-ghee-300-gr-pack-x6-_JM" target="_blank" class="btn-ml">Comprar en Mercado Libre</a>
+
+    <a href="index.html" class="volver">⬅ Volver a Productos</a>
+  </div>
+
+  <footer class="main-footer">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <h5>Contactanos</h5>
+        <p><i class="fa fa-phone"></i> <a href="tel:+543413359460">+54 341 335 9460</a></p>
+        <p><i class="fa fa-envelope"></i> <a href="mailto:repnaturalesventas@gmail.com">repnaturalesventas@gmail.com</a></p>
+        <p><i class="fa fa-map-marker"></i> Zelaya 1765 - 2000 Rosario</p>
+        <p><i class="fa fa-clock-o"></i> Lunes a viernes de 8:00 a 15:00 hs</p>
+      </div>
+      <div class="col-lg-4 col-md-12 text-center">
+        <h5>Redes Sociales</h5>
+        <a href="https://www.instagram.com/representacionesnaturales" target="_blank" class="social-icon"><i class="fa-brands fa-instagram fa-2x"></i></a>
+        <a href="https://www.facebook.com/representacionesnaturales" target="_blank" class="social-icon"><i class="fa-brands fa-facebook fa-2x"></i></a>
+      </div>
+    </div>
+    <div class="mt-4 text-center" style="color:black;">
+      <p>©️ 2025 Representaciones Naturales | Matser</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+    const toggleBtn = document.getElementById("toggleDark");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
+    });
+  </script>
+</body>
+</html>
