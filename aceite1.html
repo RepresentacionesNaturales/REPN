@@ -32,10 +32,12 @@
     }
     .imagenes img:hover { transform: scale(1.05); }
     .video-full video {
-      width: 100%;
+      width: 500px;      /* tamaño fijo, probá con 400 o 500px */
+      max-width: 100%;   /* para que en celulares no se corte */
       height: auto;
       border-radius: 12px;
-      margin-bottom: 20px;
+      margin: 0 auto 20px;
+      display: block;    /* necesario para centrar */
     }
     a.volver {
       display: inline-block;
@@ -191,6 +193,7 @@
   </script>
 </body>
 </html>
+
 
 
 
