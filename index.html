@@ -27,10 +27,7 @@
       color: var(--texto-principal);
       transition: all 0.5s ease;
     }
-    body.dark {
-      background: var(--dark-fondo);
-      color: var(--dark-texto);
-    }
+    body.dark { background: var(--dark-fondo); color: var(--dark-texto); }
 
     header {
       display: flex;
@@ -62,9 +59,7 @@
     }
     .dark-toggle:hover { background: #0d6efd; }
 
-    /* ======================
-       SLIDER
-    ====================== */
+    /* SLIDER */
     .fondo-slider {
       position: relative;
       width: 100%;
@@ -89,11 +84,8 @@
     section h2 { font-size: 2.2rem; margin-bottom: 25px; }
     section p { font-size: 1.1rem; line-height: 1.6; }
 
-    /* ======================
-       PRODUCTOS GRID CON TILT
-    ====================== */
+    /* PRODUCTOS GRID */
     .productos-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 30px; }
-
     .card {
       background: var(--card-fondo);
       width: 220px;
@@ -106,139 +98,76 @@
       cursor: pointer;
       perspective: 1000px;
     }
-
-    .card-inner {
-      transition: transform 0.3s ease;
-      border-radius: 15px;
-    }
-
-    .card:hover .card-inner {
-      transform: rotateY(10deg) rotateX(5deg) scale(1.05);
-    }
-
-    .card img {
-      width: 180px; height: 250px; object-fit: cover; border-radius: 10px;
-      transition: transform 0.3s;
-    }
+    .card-inner { transition: transform 0.3s ease; border-radius: 15px; }
+    .card:hover .card-inner { transform: rotateY(10deg) rotateX(5deg) scale(1.05); }
+    .card img { width: 180px; height: 250px; object-fit: cover; border-radius: 10px; transition: transform 0.3s; }
     .card img:hover { transform: scale(1.05); }
-
-    .btn-comprar {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 12px;
-      background: var(--verde-agua);
-      color: white;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
+    .btn-comprar { display: inline-block; margin-top: 10px; padding: 8px 12px; background: var(--verde-agua); color: white; border-radius: 8px; font-weight: bold; text-decoration: none; transition: background 0.3s; }
     .btn-comprar:hover { background: #0d6efd; }
+    body.dark .card { background: var(--dark-card); color: var(--dark-texto); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
 
-    body.dark .card {
-      background: var(--dark-card);
-      color: var(--dark-texto);
-      box-shadow: 0 6px 15px rgba(255,255,255,0.1);
-    }
-
-    /* ======================
-       GALERÍA ESTILO CARDS
-    ====================== */
-    .galeria-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .card-galeria {
-      background: var(--card-fondo);
-      border-radius: 15px;
-      box-shadow: 0 6px 15px var(--card-sombra);
-      overflow: hidden;
-      width: 200px;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .card-galeria:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px var(--card-sombra);
-    }
-
-    .card-galeria img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
+    /* CARRUSEL GALERÍA */
+    .carrusel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-top:30px; }
+    .carrusel-track { display: flex; gap: 15px; transition: transform 0.4s ease; }
+    .card-galeria { min-width: calc(20% - 12px); cursor: pointer; border-radius:10px; overflow:hidden; }
+    .card-galeria img { width: 100%; height: 140px; object-fit: cover; transition: transform 0.3s; }
     .card-galeria img:hover { transform: scale(1.05); }
+    body.dark .card-galeria { background: var(--dark-card); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
 
-    body.dark .card-galeria {
-      background: var(--dark-card);
-      box-shadow: 0 6px 15px rgba(255,255,255,0.1);
+    .flecha {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10;
+      border-radius: 50%;
     }
+    .flecha.izq { left: 10px; }
+    .flecha.der { right: 10px; }
+    .flecha:hover { background: rgba(0,0,0,0.6); }
 
-    /* ======================
-       LIGHTBOX CON NAVEGACIÓN
-    ====================== */
+    /* LIGHTBOX */
     .lightbox {
       display: none;
       position: fixed;
       top:0; left:0;
-      width: 100%;
-      height: 100%;
+      width:100%; height:100%;
       background: rgba(0,0,0,0.95);
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      z-index: 2000;
+      z-index:2000;
     }
+    .lightbox-img { max-width:90%; max-height:80%; border-radius:10px; }
+    .cerrar { position:absolute; top:20px; right:30px; font-size:50px; color:white; cursor:pointer; }
 
-    .lightbox-img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
-
-    .cerrar, .flecha {
-      position: absolute;
-      top:50%;
-      transform: translateY(-50%);
-      font-size: 40px;
-      color: white;
-      cursor: pointer;
-      user-select: none;
-      padding: 10px;
-    }
-    .cerrar { top:20px; right:30px; transform:none; font-size:50px; }
-    .flecha.izq { left:30px; }
-    .flecha.der { right:30px; }
-
+    /* FOOTER */
     footer { text-align: center; padding: 30px 20px; background: var(--fondo-footer); color: var(--texto-footer); }
     footer a { color: var(--texto-footer); text-decoration: none; }
     footer a:hover { color: var(--verde-agua); }
 
-    .whatsapp-flotante {
-      position: fixed; bottom: 20px; right: 20px; z-index: 1000; transition: transform 0.3s;
-    }
+    /* WHATSAPP */
+    .whatsapp-flotante { position: fixed; bottom: 20px; right: 20px; z-index: 1000; transition: transform 0.3s; }
     .whatsapp-flotante:hover { transform: scale(1.1); }
 
-    /* Responsive */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .productos-grid, .galeria-grid { gap: 15px; }
-      .card, .card-galeria { width: 45%; }
-      header { flex-direction: column; align-items: flex-start; }
-      nav { margin-top: 10px; }
+      .productos-grid, .carrusel-track { gap: 10px; }
+      .card, .card-galeria { width: 45%; min-width:45%; }
     }
     @media (max-width: 480px) {
-      .card, .card-galeria { width: 90%; }
+      .card, .card-galeria { width: 90%; min-width:90%; }
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header data-aos="fade-down">
     <img src="images.jpg" alt="Logo Representaciones Naturales">
     <nav>
@@ -257,101 +186,48 @@
     <img src="PRODUCTOS3.jpeg" alt="Fondo 3">
   </div>
 
+  <!-- SOBRE NOSOTROS -->
   <section id="sobre-nosotros" data-aos="fade-right">
     <h2>Sobre Nosotros</h2>
     <p>SOMOS RE! Una fábrica especializada en aceite de coco y productos naturales.</p>
   </section>
 
+  <!-- PRODUCTOS -->
   <section id="productos" data-aos="fade-up">
     <h2>PRODUCTOS</h2>
     <div class="productos-grid">
-      <div class="card" data-aos="flip-left">
-        <div class="card-inner">
-          <h3>ACEITE DE COCO NEUTRO</h3>
-          <p>ACEITE THE COCO.</p>
-          <a href="aceite1.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO"></a>
-          <a href="aceite1.html" class="btn-comprar">Comprar</a>
-        </div>
-      </div>
-      <div class="card" data-aos="flip-left" data-aos-delay="150">
-        <div class="card-inner">
-          <h3>ACEITE DE COCO VIRGEN</h3>
-          <p>ACEITE THE COCO.</p>
-          <a href="aceite2.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN"></a>
-          <a href="aceite2.html" class="btn-comprar">Comprar</a>
-        </div>
-      </div>
-      <div class="card" data-aos="flip-left" data-aos-delay="300">
-        <div class="card-inner">
-          <h3>HONEY</h3>
-          <p>MIEL HONEY.</p>
-          <a href="honey.html"><img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY"></a>
-          <a href="honey.html" class="btn-comprar">Comprar</a>
-        </div>
-      </div>
-      <div class="card" data-aos="flip-left" data-aos-delay="450">
-        <div class="card-inner">
-          <h3>THE MONKEYNUT</h3>
-          <p>PASTA DE MANI THE MONKEYNUT.</p>
-          <a href="mani.html"><img src="pasta.jpeg" alt="PASTA DE MANI"></a>
-          <a href="mani.html" class="btn-comprar">Comprar</a>
-        </div>
-      </div>
-      <div class="card" data-aos="flip-left" data-aos-delay="600">
-        <div class="card-inner">
-          <h3>GHEE</h3>
-          <p>THE GHEE.</p>
-          <a href="ghee.html"><img src="GHEE PORTADA.jpeg" alt="THE GHEE"></a>
-          <a href="ghee.html" class="btn-comprar">Comprar</a>
-        </div>
-      </div>
+      <div class="card"><div class="card-inner"><h3>ACEITE DE COCO NEUTRO</h3><p>ACEITE THE COCO.</p><a href="aceite1.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO"></a><a href="aceite1.html" class="btn-comprar">Comprar</a></div></div>
+      <div class="card"><div class="card-inner"><h3>ACEITE DE COCO VIRGEN</h3><p>ACEITE THE COCO.</p><a href="aceite2.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN"></a><a href="aceite2.html" class="btn-comprar">Comprar</a></div></div>
+      <div class="card"><div class="card-inner"><h3>HONEY</h3><p>MIEL HONEY.</p><a href="honey.html"><img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY"></a><a href="honey.html" class="btn-comprar">Comprar</a></div></div>
+      <div class="card"><div class="card-inner"><h3>THE MONKEYNUT</h3><p>PASTA DE MANI THE MONKEYNUT.</p><a href="mani.html"><img src="pasta.jpeg" alt="PASTA DE MANI"></a><a href="mani.html" class="btn-comprar">Comprar</a></div></div>
+      <div class="card"><div class="card-inner"><h3>GHEE</h3><p>THE GHEE.</p><a href="ghee.html"><img src="GHEE PORTADA.jpeg" alt="THE GHEE"></a><a href="ghee.html" class="btn-comprar">Comprar</a></div></div>
     </div>
   </section>
 
-  <!-- GALERÍA -->
+  <!-- GALERÍA CARRUSEL -->
   <section id="galeria" data-aos="fade-up">
     <h2>Galería</h2>
-    <div class="galeria-grid">
-      <div class="card-galeria"><img src="A1.jpeg" alt="A1.jpeg"></div>
-      <div class="card-galeria"><img src="A2.jpeg" alt="A2.jpeg"></div>
-      <div class="card-galeria"><img src="A3.jpeg" alt="A3.jpeg"></div>
-      <div class="card-galeria"><img src="A4.jpeg" alt="A4.jpeg"></div>
-      <div class="card-galeria"><img src="A5.jpeg" alt="A5.jpeg"></div>
-      <div class="card-galeria"><img src="A6.jpeg" alt="A6.jpeg"></div>
-      <div class="card-galeria"><img src="A7.jpeg" alt="A7.jpeg"></div>
-      <div class="card-galeria"><img src="A8.jpeg" alt="A8.jpeg"></div>
-      <div class="card-galeria"><img src="coco.jpeg" alt="coco.jpeg"></div>
-      <div class="card-galeria"><img src="A10.jpeg" alt="A10.jpeg"></div>
-      <div class="card-galeria"><img src="A11.jpeg" alt="A11.jpeg"></div>
-      <div class="card-galeria"><img src="A12.jpeg" alt="A12.jpeg"></div>
-      <div class="card-galeria"><img src="A13.jpeg" alt="A13.jpeg"></div>
-      <div class="card-galeria"><img src="A14.jpeg" alt="A14.jpeg"></div>
-      <div class="card-galeria"><img src="A15.jpeg" alt="A15.jpeg"></div>
-      <div class="card-galeria"><img src="A16.jpeg" alt="A16.jpeg"></div>
-      <div class="card-galeria"><img src="A17.jpeg" alt="A17.jpeg"></div>
-      <div class="card-galeria"><img src="A18.jpeg" alt="A18.jpeg"></div>
-      <div class="card-galeria"><img src="A19.jpeg" alt="A19.jpeg"></div>
-      <div class="card-galeria"><img src="A20.jpeg" alt="A20.jpeg"></div>
-      <div class="card-galeria"><img src="A21.jpeg" alt="A21.jpeg"></div>
-      <div class="card-galeria"><img src="A22.jpeg" alt="A22.jpeg"></div>
-      <div class="card-galeria"><img src="A23.jpeg" alt="A23.jpeg"></div>
-      <div class="card-galeria"><img src="A24.jpeg" alt="A24.jpeg"></div>
-      <div class="card-galeria"><img src="A25.jpeg" alt="A25.jpeg"></div>
-      <div class="card-galeria"><img src="A26.jpeg" alt="A26.jpeg"></div>
-      <div class="card-galeria"><img src="A27.jpeg" alt="A27.jpeg"></div>
-      <div class="card-galeria"><img src="A28.jpeg" alt="A28.jpeg"></div>
-      <div class="card-galeria"><img src="A29.jpeg" alt="A29.jpeg"></div>
-      <div class="card-galeria"><img src="A30.jpeg" alt="A30.jpeg"></div>
-      <div class="card-galeria"><img src="A31.jpeg" alt="A31.jpeg"></div>
-      <div class="card-galeria"><img src="A32.jpeg" alt="A32.jpeg"></div>
+    <div class="carrusel-container">
+      <button class="flecha izq">&#10094;</button>
+      <div class="carrusel-track">
+        <div class="card-galeria"><img src="galeria1.jpeg" alt="A1"></div>
+        <div class="card-galeria"><img src="galeria2.jpeg" alt="A2"></div>
+        <div class="card-galeria"><img src="galeria3.jpeg" alt="A3"></div>
+        <div class="card-galeria"><img src="galeria4.jpeg" alt="A4"></div>
+        <div class="card-galeria"><img src="galeria5.jpeg" alt="A5"></div>
+        <div class="card-galeria"><img src="galeria6.jpeg" alt="A6"></div>
+        <div class="card-galeria"><img src="galeria7.jpeg" alt="A7"></div>
+        <div class="card-galeria"><img src="galeria8.jpeg" alt="A8"></div>
+        <div class="card-galeria"><img src="galeria9.jpeg" alt="A9"></div>
+        <div class="card-galeria"><img src="galeria10.jpeg" alt="A10"></div>
+      </div>
+      <button class="flecha der">&#10095;</button>
     </div>
 
-    <!-- Lightbox con flechas -->
+    <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
       <span class="cerrar">&times;</span>
-      <span class="flecha izq">&#10094;</span>
       <img class="lightbox-img" src="" alt="Ampliada">
-      <span class="flecha der">&#10095;</span>
     </div>
   </section>
 
@@ -405,39 +281,33 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.querySelector('.lightbox-img');
     const cerrar = document.querySelector('.cerrar');
-    const prev = document.querySelector('.flecha.izq');
-    const next = document.querySelector('.flecha.der');
     const galeriaImgs = document.querySelectorAll('.card-galeria img');
-    let currentIndex = 0;
-
-    galeriaImgs.forEach((img, index) => {
+    galeriaImgs.forEach(img => {
       img.addEventListener('click', () => {
         lightbox.style.display = 'flex';
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
-        currentIndex = index;
       });
     });
-
     cerrar.addEventListener('click', () => { lightbox.style.display = 'none'; });
+    lightbox.addEventListener('click', e => { if(e.target !== lightboxImg) lightbox.style.display = 'none'; });
 
-    prev.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + galeriaImgs.length) % galeriaImgs.length;
-      lightboxImg.src = galeriaImgs[currentIndex].src;
-      lightboxImg.alt = galeriaImgs[currentIndex].alt;
+    // Carrusel funcional
+    const track = document.querySelector('.carrusel-track');
+    const btnPrev = document.querySelector('.carrusel-container .flecha.izq');
+    const btnNext = document.querySelector('.carrusel-container .flecha.der');
+    let position = 0;
+    const cardWidth = track.querySelector('.card-galeria').offsetWidth + 15; // ancho + gap
+    const visibleCards = 5;
+    const maxPosition = track.children.length - visibleCards;
+
+    btnNext.addEventListener('click', () => {
+      if(position < maxPosition) { position++; track.style.transform = `translateX(-${cardWidth*position}px)`; }
+    });
+    btnPrev.addEventListener('click', () => {
+      if(position > 0) { position--; track.style.transform = `translateX(-${cardWidth*position}px)`; }
     });
 
-    next.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % galeriaImgs.length;
-      lightboxImg.src = galeriaImgs[currentIndex].src;
-      lightboxImg.alt = galeriaImgs[currentIndex].alt;
-    });
-
-    lightbox.addEventListener('click', e => {
-      if(e.target !== lightboxImg && !e.target.classList.contains('flecha')) {
-        lightbox.style.display = 'none';
-      }
-    });
   </script>
 </body>
 </html>
