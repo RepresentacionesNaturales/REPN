@@ -62,6 +62,9 @@
     }
     .dark-toggle:hover { background: #0d6efd; }
 
+    /* ======================
+       SLIDER
+    ====================== */
     .fondo-slider {
       position: relative;
       width: 100%;
@@ -71,18 +74,16 @@
       align-items: center;
       justify-content: center;
     }
-    .fondo-slider .slide {
+    .fondo-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      opacity: 0;
+      top:0; left:0;
+      opacity:0;
       transition: opacity 1s ease-in-out;
     }
-    .fondo-slider .slide img { width: 100%; height: 100%; object-fit: cover; }
-    .fondo-slider .slide:nth-child(1) { animation: fade 12s infinite; }
-    .fondo-slider .slide:nth-child(2) { animation: fade 12s infinite 4s; }
-    .fondo-slider .slide:nth-child(3) { animation: fade 12s infinite 8s; }
-    @keyframes fade { 0%,33% { opacity:1; } 33.01%,100% { opacity:0; } }
+    .fondo-slider img.active { opacity:1; }
 
     section { padding: 50px 20px; text-align: center; }
     section h2 { font-size: 2.2rem; margin-bottom: 25px; }
@@ -180,16 +181,19 @@
       box-shadow: 0 6px 15px rgba(255,255,255,0.1);
     }
 
-    /* Lightbox */
+    /* ======================
+       LIGHTBOX CON NAVEGACIÓN
+    ====================== */
     .lightbox {
       display: none;
       position: fixed;
       top:0; left:0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.95);
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       z-index: 2000;
     }
 
@@ -199,14 +203,19 @@
       border-radius: 10px;
     }
 
-    .cerrar {
+    .cerrar, .flecha {
       position: absolute;
-      top: 20px;
-      right: 30px;
+      top:50%;
+      transform: translateY(-50%);
       font-size: 40px;
       color: white;
       cursor: pointer;
+      user-select: none;
+      padding: 10px;
     }
+    .cerrar { top:20px; right:30px; transform:none; font-size:50px; }
+    .flecha.izq { left:30px; }
+    .flecha.der { right:30px; }
 
     footer { text-align: center; padding: 30px 20px; background: var(--fondo-footer); color: var(--texto-footer); }
     footer a { color: var(--texto-footer); text-decoration: none; }
@@ -241,10 +250,11 @@
     <button class="dark-toggle" id="toggleDark">🌙 Dark</button>
   </header>
 
+  <!-- SLIDER -->
   <div class="fondo-slider" data-aos="zoom-in">
-    <div class="slide"><img src="PRODUCTOS1.jpeg" alt="Fondo 1"></div>
-    <div class="slide"><img src="PRODUCTOS2.jpeg" alt="Fondo 2"></div>
-    <div class="slide"><img src="PRODUCTOS3.jpeg" alt="Fondo 3"></div>
+    <img src="PRODUCTOS1.jpeg" class="active" alt="Fondo 1">
+    <img src="PRODUCTOS2.jpeg" alt="Fondo 2">
+    <img src="PRODUCTOS3.jpeg" alt="Fondo 3">
   </div>
 
   <section id="sobre-nosotros" data-aos="fade-right">
@@ -255,71 +265,50 @@
   <section id="productos" data-aos="fade-up">
     <h2>PRODUCTOS</h2>
     <div class="productos-grid">
-      <!-- ACEITE DE COCO NEUTRO -->
       <div class="card" data-aos="flip-left">
         <div class="card-inner">
           <h3>ACEITE DE COCO NEUTRO</h3>
           <p>ACEITE THE COCO.</p>
-          <a href="aceite1.html">
-            <img src="aceite1.jpeg" alt="Aceite THE COCO">
-          </a>
+          <a href="aceite1.html"><img src="aceite1.jpeg" alt="Aceite THE COCO"></a>
           <a href="aceite1.html" class="btn-comprar">Comprar</a>
         </div>
       </div>
-
-      <!-- ACEITE DE COCO VIRGEN -->
       <div class="card" data-aos="flip-left" data-aos-delay="150">
         <div class="card-inner">
           <h3>ACEITE DE COCO VIRGEN</h3>
           <p>ACEITE THE COCO.</p>
-          <a href="aceite2.html">
-            <img src="aceite2.jpeg" alt="Aceite THE COCO VIRGEN">
-          </a>
+          <a href="aceite2.html"><img src="aceite2.jpeg" alt="Aceite THE COCO VIRGEN"></a>
           <a href="aceite2.html" class="btn-comprar">Comprar</a>
         </div>
       </div>
-
-      <!-- HONEY -->
       <div class="card" data-aos="flip-left" data-aos-delay="300">
         <div class="card-inner">
           <h3>HONEY</h3>
           <p>MIEL HONEY.</p>
-          <a href="honey.html">
-            <img src="honey.jpeg" alt="MIEL HONEY">
-          </a>
+          <a href="honey.html"><img src="honey.jpeg" alt="MIEL HONEY"></a>
           <a href="honey.html" class="btn-comprar">Comprar</a>
         </div>
       </div>
-
-      <!-- PASTA DE MANI THE MONKEYNUT -->
-      <div class="card" data-aos="flip-left" data-aos-delay="300">
+      <div class="card" data-aos="flip-left" data-aos-delay="450">
         <div class="card-inner">
           <h3>THE MONKEYNUT</h3>
           <p>PASTA DE MANI THE MONKEYNUT.</p>
-          <a href="mani.html">
-            <img src="pasta_mani.jpeg" alt="PASTA DE MANI THE MONKEYNUT">
-          </a>
+          <a href="mani.html"><img src="pasta_mani.jpeg" alt="PASTA DE MANI"></a>
           <a href="mani.html" class="btn-comprar">Comprar</a>
         </div>
       </div>
-      
-      <!-- GHEE -->
-      <div class="card" data-aos="flip-left" data-aos-delay="450">
+      <div class="card" data-aos="flip-left" data-aos-delay="600">
         <div class="card-inner">
           <h3>GHEE</h3>
           <p>THE GHEE.</p>
-          <a href="ghee.html">
-            <img src="ghee.jpeg" alt="THE GHEE">
-          </a>
+          <a href="ghee.html"><img src="ghee.jpeg" alt="THE GHEE"></a>
           <a href="ghee.html" class="btn-comprar">Comprar</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================
-       GALERÍA
-  ====================== -->
+  <!-- GALERÍA -->
   <section id="galeria" data-aos="fade-up">
     <h2>Galería</h2>
     <div class="galeria-grid">
@@ -330,13 +319,16 @@
       <div class="card-galeria"><img src="galeria5.jpeg" alt="Imagen 5"></div>
     </div>
 
-    <!-- Lightbox -->
+    <!-- Lightbox con flechas -->
     <div id="lightbox" class="lightbox">
       <span class="cerrar">&times;</span>
+      <span class="flecha izq">&#10094;</span>
       <img class="lightbox-img" src="" alt="Ampliada">
+      <span class="flecha der">&#10095;</span>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer id="contacto">
     <h5>Contactanos</h5>
     <p><i class="fa fa-phone"></i> <a href="tel:+543412167579">+54 9 341 216 7579</a></p>
@@ -358,9 +350,10 @@
 
   <a href="https://api.whatsapp.com/send?phone=5493412167579&text=Hola Re! Quiero info de..." 
      class="whatsapp-flotante" target="_blank">
-    <img src="whatsapp_logo.png" alt="WhatsApp" style="max-height:60px;">
+    <img src="Whatsapp_logo.png" alt="WhatsApp" style="max-height:60px;">
   </a>
 
+  <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 1000, once: true });
@@ -372,28 +365,52 @@
       toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
     });
 
+    // Slider automático
+    const slides = document.querySelectorAll('.fondo-slider img');
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 4000);
+
     // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.querySelector('.lightbox-img');
     const cerrar = document.querySelector('.cerrar');
+    const prev = document.querySelector('.flecha.izq');
+    const next = document.querySelector('.flecha.der');
     const galeriaImgs = document.querySelectorAll('.card-galeria img');
+    let currentIndex = 0;
 
-    galeriaImgs.forEach(img => {
+    galeriaImgs.forEach((img, index) => {
       img.addEventListener('click', () => {
         lightbox.style.display = 'flex';
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
+        currentIndex = index;
       });
     });
 
-    cerrar.addEventListener('click', () => {
-      lightbox.style.display = 'none';
+    cerrar.addEventListener('click', () => { lightbox.style.display = 'none'; });
+
+    prev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + galeriaImgs.length) % galeriaImgs.length;
+      lightboxImg.src = galeriaImgs[currentIndex].src;
+      lightboxImg.alt = galeriaImgs[currentIndex].alt;
+    });
+
+    next.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % galeriaImgs.length;
+      lightboxImg.src = galeriaImgs[currentIndex].src;
+      lightboxImg.alt = galeriaImgs[currentIndex].alt;
     });
 
     lightbox.addEventListener('click', e => {
-      if (e.target !== lightboxImg) lightbox.style.display = 'none';
+      if(e.target !== lightboxImg && !e.target.classList.contains('flecha')) {
+        lightbox.style.display = 'none';
+      }
     });
   </script>
 </body>
 </html>
-
