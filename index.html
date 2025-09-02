@@ -1,313 +1,318 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>REPRESENTACIONES NATURALES</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>REPRESENTACIONES NATURALES</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <style>
-    :root {
-      --verde-agua: #20c997;
-      --verde-fondo: #C6E5B1;
-      --texto-principal: #222;
-      --texto-footer: #fff;
-      --fondo-footer: rgba(0,0,0,0.7);
-      --card-fondo: #fff;
-      --card-sombra: rgba(0,0,0,0.15);
-      --dark-fondo: #121212;
-      --dark-texto: #f1f1f1;
-      --dark-card: #1e1e1e;
-    }
+<style>
+:root {
+  --verde-agua: #20c997;
+  --verde-fondo: #C6E5B1;
+  --texto-principal: #222;
+  --texto-footer: #fff;
+  --fondo-footer: rgba(0,0,0,0.7);
+  --card-fondo: #fff;
+  --card-sombra: rgba(0,0,0,0.15);
+  --dark-fondo: #121212;
+  --dark-texto: #f1f1f1;
+  --dark-card: #1e1e1e;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--verde-fondo);
-      color: var(--texto-principal);
-      transition: all 0.5s ease;
-    }
-    body.dark { background: var(--dark-fondo); color: var(--dark-texto); }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--verde-fondo);
+  color: var(--texto-principal);
+  transition: all 0.5s ease;
+}
+body.dark { background: var(--dark-fondo); color: var(--dark-texto); }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: background 0.5s ease;
-    }
-    body.dark header { background: rgba(30,30,30,0.95); }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.5s ease;
+}
+body.dark header { background: rgba(30,30,30,0.95); }
 
-    header img { height: 60px; }
-    nav a { margin: 0 15px; text-decoration: none; font-weight: bold; color: var(--texto-principal); transition: color 0.3s; }
-    nav a:hover { color: var(--verde-agua); }
+header img { height: 60px; }
+nav a { margin: 0 15px; text-decoration: none; font-weight: bold; color: var(--texto-principal); transition: color 0.3s; }
+nav a:hover { color: var(--verde-agua); }
 
-    .dark-toggle {
-      padding: 8px 15px;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      background: var(--verde-agua);
-      color: white;
-      transition: all 0.3s;
-    }
-    .dark-toggle:hover { background: #0d6efd; }
+.dark-toggle {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  background: var(--verde-agua);
+  color: white;
+  transition: all 0.3s;
+}
+.dark-toggle:hover { background: #0d6efd; }
 
-    /* SLIDER */
-    .fondo-slider {
-      position: relative;
-      width: 100%;
-      height: 60vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .fondo-slider img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top:0; left:0;
-      opacity:0;
-      transition: opacity 1s ease-in-out;
-    }
-    .fondo-slider img.active { opacity:1; }
+/* SLIDER */
+.fondo-slider {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fondo-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top:0; left:0;
+  opacity:0;
+  transition: opacity 1s ease-in-out;
+}
+.fondo-slider img.active { opacity:1; }
 
-    section { padding: 50px 20px; text-align: center; }
-    section h2 { font-size: 2.2rem; margin-bottom: 25px; }
-    section p { font-size: 1.1rem; line-height: 1.6; }
+section { padding: 50px 20px; text-align: center; }
+section h2 { font-size: 2.2rem; margin-bottom: 25px; }
+section p { font-size: 1.1rem; line-height: 1.6; }
 
-    /* PRODUCTOS GRID */
-    .productos-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 30px; }
-    .card {
-      background: var(--card-fondo);
-      width: 220px;
-      padding: 15px;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px var(--card-sombra);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      color: var(--texto-principal);
-      cursor: pointer;
-      perspective: 1000px;
-    }
-    .card-inner { transition: transform 0.3s ease; border-radius: 15px; }
-    .card:hover .card-inner { transform: rotateY(10deg) rotateX(5deg) scale(1.05); }
-    .card img { width: 180px; height: 250px; object-fit: cover; border-radius: 10px; transition: transform 0.3s; }
-    .card img:hover { transform: scale(1.05); }
-    .btn-comprar { display: inline-block; margin-top: 10px; padding: 8px 12px; background: var(--verde-agua); color: white; border-radius: 8px; font-weight: bold; text-decoration: none; transition: background 0.3s; }
-    .btn-comprar:hover { background: #0d6efd; }
-    body.dark .card { background: var(--dark-card); color: var(--dark-texto); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
+/* PRODUCTOS */
+.productos-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 30px; }
+.card {
+  background: var(--card-fondo);
+  width: 220px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px var(--card-sombra);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: var(--texto-principal);
+  cursor: pointer;
+  perspective: 1000px;
+}
+.card-inner { transition: transform 0.3s ease; border-radius: 15px; }
+.card:hover .card-inner { transform: rotateY(10deg) rotateX(5deg) scale(1.05); }
+.card img { width: 180px; height: 250px; object-fit: cover; border-radius: 10px; transition: transform 0.3s; }
+.card img:hover { transform: scale(1.05); }
+.btn-comprar { display: inline-block; margin-top: 10px; padding: 8px 12px; background: var(--verde-agua); color: white; border-radius: 8px; font-weight: bold; text-decoration: none; transition: background 0.3s; }
+.btn-comprar:hover { background: #0d6efd; }
+body.dark .card { background: var(--dark-card); color: var(--dark-texto); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
 
-    /* CARRUSEL GALERÍA */
-    .carrusel-container { position: relative; width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-top:30px; }
-    .carrusel-track { display: flex; gap: 15px; transition: transform 0.4s ease; }
-    .card-galeria { min-width: calc(20% - 12px); cursor: pointer; border-radius:10px; overflow:hidden; }
-    .card-galeria img { width: 100%; height: 140px; object-fit: cover; transition: transform 0.3s; }
-    .card-galeria img:hover { transform: scale(1.05); }
-    body.dark .card-galeria { background: var(--dark-card); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
+/* GALERÍA CARRUSEL SWIPE + INFINITO */
+.carrusel-container {
+  position: relative; width: 100%; overflow: hidden; margin-top:30px;
+}
+.carrusel-track {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.4s ease;
+}
+.card-galeria {
+  min-width: calc(20% - 12px);
+  cursor: pointer;
+  border-radius:10px;
+  overflow:hidden;
+}
+.card-galeria img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.card-galeria img:hover { transform: scale(1.05); }
+body.dark .card-galeria { background: var(--dark-card); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
 
-    .flecha {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 40px;
-      background: rgba(0,0,0,0.3);
-      color: white;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-      z-index: 10;
-      border-radius: 50%;
-    }
-    .flecha.izq { left: 10px; }
-    .flecha.der { right: 10px; }
-    .flecha:hover { background: rgba(0,0,0,0.6); }
+.flecha {
+  position: absolute; top:50%; transform: translateY(-50%);
+  font-size:40px; background: rgba(0,0,0,0.3); color:white;
+  border:none; cursor:pointer; padding:10px; z-index:10; border-radius:50%;
+}
+.flecha.izq { left:10px; } .flecha.der { right:10px; }
+.flecha:hover { background: rgba(0,0,0,0.6); }
 
-    /* LIGHTBOX */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(0,0,0,0.95);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index:2000;
-    }
-    .lightbox-img { max-width:90%; max-height:80%; border-radius:10px; }
-    .cerrar { position:absolute; top:20px; right:30px; font-size:50px; color:white; cursor:pointer; }
+/* LIGHTBOX */
+.lightbox {
+  display: none;
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.95);
+  justify-content:center; align-items:center; flex-direction:column;
+  z-index:2000;
+}
+.lightbox-img { max-width:90%; max-height:80%; border-radius:10px; }
+.cerrar { position:absolute; top:20px; right:30px; font-size:50px; color:white; cursor:pointer; }
 
-    /* FOOTER */
-    footer { text-align: center; padding: 30px 20px; background: var(--fondo-footer); color: var(--texto-footer); }
-    footer a { color: var(--texto-footer); text-decoration: none; }
-    footer a:hover { color: var(--verde-agua); }
+/* FOOTER */
+footer { text-align:center; padding:30px 20px; background: var(--fondo-footer); color: var(--texto-footer);}
+footer a { color: var(--texto-footer); text-decoration:none;}
+footer a:hover { color: var(--verde-agua); }
 
-    /* WHATSAPP */
-    .whatsapp-flotante { position: fixed; bottom: 20px; right: 20px; z-index: 1000; transition: transform 0.3s; }
-    .whatsapp-flotante:hover { transform: scale(1.1); }
+/* WHATSAPP */
+.whatsapp-flotante { position: fixed; bottom:20px; right:20px; z-index:1000; transition: transform 0.3s; }
+.whatsapp-flotante:hover { transform: scale(1.1); }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .productos-grid, .carrusel-track { gap: 10px; }
-      .card, .card-galeria { width: 45%; min-width:45%; }
-    }
-    @media (max-width: 480px) {
-      .card, .card-galeria { width: 90%; min-width:90%; }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:768px){.productos-grid,.carrusel-track{gap:10px}.card,.card-galeria{width:45%; min-width:45%;}}
+@media(max-width:480px){.card,.card-galeria{width:90%; min-width:90%;}}
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header data-aos="fade-down">
-    <img src="images.jpg" alt="Logo Representaciones Naturales">
-    <nav>
-      <a href="#sobre-nosotros">SOBRE NOSOTROS</a>
-      <a href="#productos">PRODUCTOS</a>
-      <a href="#galeria">GALERÍA</a>
-      <a href="#contacto">CONTACTO</a>
-    </nav>
-    <button class="dark-toggle" id="toggleDark">🌙 Dark</button>
-  </header>
+<header data-aos="fade-down">
+  <img src="images.jpg" alt="Logo">
+  <nav>
+    <a href="#sobre-nosotros">SOBRE NOSOTROS</a>
+    <a href="#productos">PRODUCTOS</a>
+    <a href="#galeria">GALERÍA</a>
+    <a href="#contacto">CONTACTO</a>
+  </nav>
+  <button class="dark-toggle" id="toggleDark">🌙 Dark</button>
+</header>
 
-  <!-- SLIDER -->
-  <div class="fondo-slider" data-aos="zoom-in">
-    <img src="PRODUCTOS1.jpeg" class="active" alt="Fondo 1">
-    <img src="PRODUCTOS2.jpeg" alt="Fondo 2">
-    <img src="PRODUCTOS3.jpeg" alt="Fondo 3">
+<!-- SLIDER -->
+<div class="fondo-slider" data-aos="zoom-in">
+  <img src="PRODUCTOS1.jpeg" class="active" alt="Fondo 1">
+  <img src="PRODUCTOS2.jpeg" alt="Fondo 2">
+  <img src="PRODUCTOS3.jpeg" alt="Fondo 3">
+</div>
+
+<!-- SOBRE NOSOTROS -->
+<section id="sobre-nosotros" data-aos="fade-right">
+  <h2>Sobre Nosotros</h2>
+  <p>SOMOS RE! Una fábrica especializada en aceite de coco y productos naturales.</p>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" data-aos="fade-up">
+  <h2>PRODUCTOS</h2>
+  <div class="productos-grid">
+    <div class="card"><div class="card-inner"><h3>ACEITE DE COCO NEUTRO</h3><p>ACEITE THE COCO.</p><a href="aceite1.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite"></a><a href="aceite1.html" class="btn-comprar">Comprar</a></div></div>
+    <div class="card"><div class="card-inner"><h3>ACEITE DE COCO VIRGEN</h3><p>ACEITE THE COCO.</p><a href="aceite2.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite VIRGEN"></a><a href="aceite2.html" class="btn-comprar">Comprar</a></div></div>
+    <div class="card"><div class="card-inner"><h3>HONEY</h3><p>MIEL HONEY.</p><a href="honey.html"><img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY"></a><a href="honey.html" class="btn-comprar">Comprar</a></div></div>
+    <div class="card"><div class="card-inner"><h3>THE MONKEYNUT</h3><p>PASTA DE MANI</p><a href="mani.html"><img src="pasta.jpeg" alt="PASTA MANI"></a><a href="mani.html" class="btn-comprar">Comprar</a></div></div>
+    <div class="card"><div class="card-inner"><h3>GHEE</h3><p>THE GHEE.</p><a href="ghee.html"><img src="GHEE PORTADA.jpeg" alt="GHEE"></a><a href="ghee.html" class="btn-comprar">Comprar</a></div></div>
+  </div>
+</section>
+
+<!-- GALERÍA CARRUSEL PROFESIONAL -->
+<section id="galeria" data-aos="fade-up">
+  <h2>Galería</h2>
+  <div class="carrusel-container">
+    <button class="flecha izq">&#10094;</button>
+    <div class="carrusel-track">
+      <div class="card-galeria"><img src="A1.jpeg" alt="A1"></div>
+      <div class="card-galeria"><img src="A2.jpeg" alt="A2"></div>
+      <div class="card-galeria"><img src="A3.jpeg" alt="A3"></div>
+      <div class="card-galeria"><img src="A4.jpeg" alt="A4"></div>
+      <div class="card-galeria"><img src="A5.jpeg" alt="A5"></div>
+      <div class="card-galeria"><img src="A6.jpeg" alt="A6"></div>
+      <div class="card-galeria"><img src="A7.jpeg" alt="A7"></div>
+      <div class="card-galeria"><img src="A8.jpeg" alt="A8"></div>
+      <div class="card-galeria"><img src="A9.jpeg" alt="A9"></div>
+      <div class="card-galeria"><img src="A10.jpeg" alt="A10"></div>
+    </div>
+    <button class="flecha der">&#10095;</button>
   </div>
 
-  <!-- SOBRE NOSOTROS -->
-  <section id="sobre-nosotros" data-aos="fade-right">
-    <h2>Sobre Nosotros</h2>
-    <p>SOMOS RE! Una fábrica especializada en aceite de coco y productos naturales.</p>
-  </section>
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="cerrar">&times;</span>
+    <img class="lightbox-img" src="" alt="Ampliada">
+  </div>
+</section>
 
-  <!-- PRODUCTOS -->
-  <section id="productos" data-aos="fade-up">
-    <h2>PRODUCTOS</h2>
-    <div class="productos-grid">
-      <div class="card"><div class="card-inner"><h3>ACEITE DE COCO NEUTRO</h3><p>ACEITE THE COCO.</p><a href="aceite1.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite THE COCO"></a><a href="aceite1.html" class="btn-comprar">Comprar</a></div></div>
-      <div class="card"><div class="card-inner"><h3>ACEITE DE COCO VIRGEN</h3><p>ACEITE THE COCO.</p><a href="aceite2.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite THE COCO VIRGEN"></a><a href="aceite2.html" class="btn-comprar">Comprar</a></div></div>
-      <div class="card"><div class="card-inner"><h3>HONEY</h3><p>MIEL HONEY.</p><a href="honey.html"><img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY"></a><a href="honey.html" class="btn-comprar">Comprar</a></div></div>
-      <div class="card"><div class="card-inner"><h3>THE MONKEYNUT</h3><p>PASTA DE MANI THE MONKEYNUT.</p><a href="mani.html"><img src="pasta.jpeg" alt="PASTA DE MANI"></a><a href="mani.html" class="btn-comprar">Comprar</a></div></div>
-      <div class="card"><div class="card-inner"><h3>GHEE</h3><p>THE GHEE.</p><a href="ghee.html"><img src="GHEE PORTADA.jpeg" alt="THE GHEE"></a><a href="ghee.html" class="btn-comprar">Comprar</a></div></div>
-    </div>
-  </section>
+<!-- FOOTER -->
+<footer id="contacto">
+  <h5>Contactanos</h5>
+  <p><i class="fa fa-phone"></i> <a href="tel:+543412167579">+54 9 341 216 7579</a></p>
+  <p><i class="fa fa-envelope"></i> <a href="mailto:repnaturales@hotmail.com">repnaturales@hotmail.com</a></p>
+  <p><i class="fa fa-map-marker"></i> Baigorria 1450 - 2000 Rosario</p>
+  <p><i class="fa fa-clock-o"></i> Lunes a viernes de 8:00 a 15:00 hs</p>
+  <div>
+    <a href="https://www.instagram.com/representacionesnaturales" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
+    <a href="https://www.facebook.com/representacionesnaturales" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+  </div>
+  <div class="mt-3"><p>©️ 2025 Representaciones Naturales | Matser</p></div>
+</footer>
 
-  <!-- GALERÍA CARRUSEL -->
-  <section id="galeria" data-aos="fade-up">
-    <h2>Galería</h2>
-    <div class="carrusel-container">
-      <button class="flecha izq">&#10094;</button>
-      <div class="carrusel-track">
-        <div class="card-galeria"><img src="galeria1.jpeg" alt="A1"></div>
-        <div class="card-galeria"><img src="galeria2.jpeg" alt="A2"></div>
-        <div class="card-galeria"><img src="galeria3.jpeg" alt="A3"></div>
-        <div class="card-galeria"><img src="galeria4.jpeg" alt="A4"></div>
-        <div class="card-galeria"><img src="galeria5.jpeg" alt="A5"></div>
-        <div class="card-galeria"><img src="galeria6.jpeg" alt="A6"></div>
-        <div class="card-galeria"><img src="galeria7.jpeg" alt="A7"></div>
-        <div class="card-galeria"><img src="galeria8.jpeg" alt="A8"></div>
-        <div class="card-galeria"><img src="galeria9.jpeg" alt="A9"></div>
-        <div class="card-galeria"><img src="galeria10.jpeg" alt="A10"></div>
-      </div>
-      <button class="flecha der">&#10095;</button>
-    </div>
+<a href="https://api.whatsapp.com/send?phone=5493412167579&text=Hola Re! Quiero info de..." class="whatsapp-flotante" target="_blank">
+  <img src="Whatsapp logo.png" alt="WhatsApp" style="max-height:60px;">
+</a>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-      <span class="cerrar">&times;</span>
-      <img class="lightbox-img" src="" alt="Ampliada">
-    </div>
-  </section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
 
-  <!-- FOOTER -->
-  <footer id="contacto">
-    <h5>Contactanos</h5>
-    <p><i class="fa fa-phone"></i> <a href="tel:+543412167579">+54 9 341 216 7579</a></p>
-    <p><i class="fa fa-envelope"></i> <a href="mailto:repnaturales@hotmail.com">repnaturales@hotmail.com</a></p>
-    <p><i class="fa fa-map-marker"></i> Baigorria 1450 - 2000 Rosario</p>
-    <p><i class="fa fa-clock-o"></i> Lunes a viernes de 8:00 a 15:00 hs</p>
-    <div>
-      <a href="https://www.instagram.com/representacionesnaturales" target="_blank">
-        <i class="fa-brands fa-instagram fa-2x"></i>
-      </a>
-      <a href="https://www.facebook.com/representacionesnaturales" target="_blank">
-        <i class="fa-brands fa-facebook fa-2x"></i>
-      </a>
-    </div>
-    <div class="mt-3">
-      <p>©️ 2025 Representaciones Naturales | Matser</p>
-    </div>
-  </footer>
+// Dark mode
+const toggleBtn = document.getElementById("toggleDark");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
+});
 
-  <a href="https://api.whatsapp.com/send?phone=5493412167579&text=Hola Re! Quiero info de..." 
-     class="whatsapp-flotante" target="_blank">
-    <img src="Whatsapp logo.png" alt="WhatsApp" style="max-height:60px;">
-  </a>
+// Slider automático
+const slides = document.querySelectorAll('.fondo-slider img');
+let currentSlide = 0;
+setInterval(() => {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}, 4000);
 
-  <!-- SCRIPTS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const cerrar = document.querySelector('.cerrar');
+const galeriaImgs = document.querySelectorAll('.card-galeria img');
+galeriaImgs.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display='flex';
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+  });
+});
+cerrar.addEventListener('click', ()=>{ lightbox.style.display='none'; });
+lightbox.addEventListener('click', e => { if(e.target!==lightboxImg) lightbox.style.display='none'; });
 
-    // Dark mode toggle
-    const toggleBtn = document.getElementById("toggleDark");
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
-    });
+// Carrusel infinito + swipe
+const track = document.querySelector('.carrusel-track');
+const btnPrev = document.querySelector('.flecha.izq');
+const btnNext = document.querySelector('.flecha.der');
+let position = 0;
+const cardWidth = track.querySelector('.card-galeria').offsetWidth + 15; // ancho + gap
+const visibleCards = 5;
+const totalCards = track.children.length;
 
-    // Slider automático
-    const slides = document.querySelectorAll('.fondo-slider img');
-    let currentSlide = 0;
-    setInterval(() => {
-      slides[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
-    }, 4000);
+function updateTrack() { track.style.transform = `translateX(-${position*cardWidth}px)`; }
+btnNext.addEventListener('click', ()=>{ position=(position+1)%totalCards; updateTrack(); });
+btnPrev.addEventListener('click', ()=>{ position=(position-1+totalCards)%totalCards; updateTrack(); });
 
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.querySelector('.lightbox-img');
-    const cerrar = document.querySelector('.cerrar');
-    const galeriaImgs = document.querySelectorAll('.card-galeria img');
-    galeriaImgs.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-      });
-    });
-    cerrar.addEventListener('click', () => { lightbox.style.display = 'none'; });
-    lightbox.addEventListener('click', e => { if(e.target !== lightboxImg) lightbox.style.display = 'none'; });
-
-    // Carrusel funcional
-    const track = document.querySelector('.carrusel-track');
-    const btnPrev = document.querySelector('.carrusel-container .flecha.izq');
-    const btnNext = document.querySelector('.carrusel-container .flecha.der');
-    let position = 0;
-    const cardWidth = track.querySelector('.card-galeria').offsetWidth + 15; // ancho + gap
-    const visibleCards = 5;
-    const maxPosition = track.children.length - visibleCards;
-
-    btnNext.addEventListener('click', () => {
-      if(position < maxPosition) { position++; track.style.transform = `translateX(-${cardWidth*position}px)`; }
-    });
-    btnPrev.addEventListener('click', () => {
-      if(position > 0) { position--; track.style.transform = `translateX(-${cardWidth*position}px)`; }
-    });
-
-  </script>
+// Swipe
+let startX = 0, isDown = false;
+track.addEventListener('mousedown', e=>{ isDown=true; startX=e.pageX; });
+track.addEventListener('mouseup', e=>{ isDown=false; });
+track.addEventListener('mouseleave', e=>{ isDown=false; });
+track.addEventListener('mousemove', e=>{
+  if(!isDown) return;
+  const dx=e.pageX-startX;
+  if(dx>30){ btnPrev.click(); startX=e.pageX; }
+  if(dx<-30){ btnNext.click(); startX=e.pageX; }
+});
+// Touch para móviles
+track.addEventListener('touchstart', e=>{ startX=e.touches[0].pageX; });
+track.addEventListener('touchmove', e=>{
+  const dx=e.touches[0].pageX-startX;
+  if(dx>30){ btnPrev.click(); startX=e.touches[0].pageX; }
+  if(dx<-30){ btnNext.click(); startX=e.touches[0].pageX; }
+});
+</script>
 </body>
 </html>
