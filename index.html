@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>REPRESENTACIONES NATURALES</title>
+<meta name="description" content="Fábrica de aceite de coco, ghee, miel y productos naturales en Rosario. Representaciones Naturales, calidad y bienestar.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -59,27 +60,22 @@ nav a:hover { color: var(--verde-agua); }
 }
 .dark-toggle:hover { background: #0d6efd; }
 
-/* SLIDER */
+/* VIDEO PORTADA */
 .fondo-slider {
   position: relative;
   width: 100%;
   height: 60vh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.fondo-slider img {
+.fondo-slider video {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute;
-  top:0; left:0;
-  opacity:0;
-  transition: opacity 1s ease-in-out;
 }
-.fondo-slider img.active { opacity:1; }
 
+/* SECCIONES */
 section { padding: 50px 20px; text-align: center; }
 section h2 { font-size: 2.2rem; margin-bottom: 25px; }
 section p { font-size: 1.1rem; line-height: 1.6; }
@@ -106,27 +102,11 @@ section p { font-size: 1.1rem; line-height: 1.6; }
 .btn-comprar:hover { background: #0d6efd; }
 body.dark .card { background: var(--dark-card); color: var(--dark-texto); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
 
-/* GALERÍA CARRUSEL SWIPE + INFINITO */
-.carrusel-container {
-  position: relative; width: 100%; overflow: hidden; margin-top:30px;
-}
-.carrusel-track {
-  display: flex;
-  gap: 15px;
-  transition: transform 0.4s ease;
-}
-.card-galeria {
-  min-width: calc(20% - 12px);
-  cursor: pointer;
-  border-radius:10px;
-  overflow:hidden;
-}
-.card-galeria img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
+/* GALERÍA CARRUSEL */
+.carrusel-container { position: relative; width: 100%; overflow: hidden; margin-top:30px; }
+.carrusel-track { display: flex; gap: 15px; transition: transform 0.4s ease; }
+.card-galeria { min-width: calc(20% - 12px); cursor: pointer; border-radius:10px; overflow:hidden; }
+.card-galeria img { width: 100%; height: 140px; object-fit: cover; transition: transform 0.3s; }
 .card-galeria img:hover { transform: scale(1.05); }
 body.dark .card-galeria { background: var(--dark-card); box-shadow: 0 6px 15px rgba(255,255,255,0.1); }
 
@@ -149,6 +129,11 @@ body.dark .card-galeria { background: var(--dark-card); box-shadow: 0 6px 15px r
 }
 .lightbox-img { max-width:90%; max-height:80%; border-radius:10px; }
 .cerrar { position:absolute; top:20px; right:30px; font-size:50px; color:white; cursor:pointer; }
+.lightbox-flecha {
+  position:absolute; top:50%; transform:translateY(-50%);
+  font-size:60px; color:white; cursor:pointer; padding:10px; user-select:none;
+}
+#prevL { left:30px; } #nextL { right:30px; }
 
 /* FOOTER */
 footer { text-align:center; padding:30px 20px; background: var(--fondo-footer); color: var(--texto-footer);}
@@ -167,7 +152,7 @@ footer a:hover { color: var(--verde-agua); }
 <body>
 
 <header data-aos="fade-down">
-  <img src="images.jpg" alt="Logo">
+  <img src="images.jpg" alt="Logo Representaciones Naturales">
   <nav>
     <a href="#sobre-nosotros">SOBRE NOSOTROS</a>
     <a href="#productos">PRODUCTOS</a>
@@ -177,11 +162,12 @@ footer a:hover { color: var(--verde-agua); }
   <button class="dark-toggle" id="toggleDark">🌙 Dark</button>
 </header>
 
-<!-- SLIDER -->
+<!-- VIDEO DE PORTADA -->
 <div class="fondo-slider" data-aos="zoom-in">
-  <img src="PRODUCTOS1.jpeg" class="active" alt="Fondo 1">
-  <img src="PRODUCTOS2.jpeg" alt="Fondo 2">
-  <img src="PRODUCTOS3.jpeg" alt="Fondo 3">
+  <video autoplay muted loop playsinline>
+    <source src="Video Portada Rep.mp4" type="video/mp4">
+    Tu navegador no soporta el formato de video.
+  </video>
 </div>
 
 <!-- SOBRE NOSOTROS -->
@@ -194,58 +180,27 @@ footer a:hover { color: var(--verde-agua); }
 <section id="productos" data-aos="fade-up">
   <h2>PRODUCTOS</h2>
   <div class="productos-grid">
-    <div class="card"><div class="card-inner"><h3>ACEITE DE COCO NEUTRO</h3><p>ACEITE THE COCO.</p><a href="aceite1.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55 (1).jpeg" alt="Aceite"></a><a href="aceite1.html" class="btn-comprar">Comprar</a></div></div>
-    <div class="card"><div class="card-inner"><h3>ACEITE DE COCO VIRGEN</h3><p>ACEITE THE COCO.</p><a href="aceite2.html"><img src="WhatsApp Image 2025-08-20 at 14.28.55.jpeg" alt="Aceite VIRGEN"></a><a href="aceite2.html" class="btn-comprar">Comprar</a></div></div>
-    <div class="card"><div class="card-inner"><h3>HONEY</h3><p>MIEL HONEY.</p><a href="honey.html"><img src="WhatsApp Image 2025-08-20 at 14.28.54.jpeg" alt="MIEL HONEY"></a><a href="honey.html" class="btn-comprar">Comprar</a></div></div>
-    <div class="card"><div class="card-inner"><h3>THE MONKEYNUT</h3><p>PASTA DE MANI</p><a href="mani.html"><img src="pasta.jpeg" alt="PASTA MANI"></a><a href="mani.html" class="btn-comprar">Comprar</a></div></div>
-    <div class="card"><div class="card-inner"><h3>GHEE</h3><p>THE GHEE.</p><a href="ghee.html"><img src="GHEE PORTADA.jpeg" alt="GHEE"></a><a href="ghee.html" class="btn-comprar">Comprar</a></div></div>
+    <!-- Aquí van tus cards de productos -->
   </div>
 </section>
 
-<!-- GALERÍA CARRUSEL PROFESIONAL -->
+<!-- GALERÍA -->
 <section id="galeria" data-aos="fade-up">
   <h2>Galería</h2>
   <div class="carrusel-container">
     <button class="flecha izq">&#10094;</button>
     <div class="carrusel-track">
-      <div class="card-galeria"><img src="A1.jpeg" alt="A1"></div>
-      <div class="card-galeria"><img src="A2.jpeg" alt="A2"></div>
-      <div class="card-galeria"><img src="A3.jpeg" alt="A3"></div>
-      <div class="card-galeria"><img src="A4.jpeg" alt="A4"></div>
-      <div class="card-galeria"><img src="A5.jpeg" alt="A5"></div>
-      <div class="card-galeria"><img src="A6.jpeg" alt="A6"></div>
-      <div class="card-galeria"><img src="A7.jpeg" alt="A7"></div>
-      <div class="card-galeria"><img src="A8.jpeg" alt="A8"></div>
-      <div class="card-galeria"><img src="coco.jpeg" alt="A9"></div>
-      <div class="card-galeria"><img src="A10.jpeg" alt="A10"></div>
-      <div class="card-galeria"><img src="A11.jpeg" alt="A11"></div>
-      <div class="card-galeria"><img src="A12.jpeg" alt="A12"></div>
-      <div class="card-galeria"><img src="A13.jpeg" alt="A13"></div>
-      <div class="card-galeria"><img src="A14.jpeg" alt="A14"></div>
-      <div class="card-galeria"><img src="A15.jpeg" alt="A15"></div>
-      <div class="card-galeria"><img src="A16.jpeg" alt="A16"></div>
-      <div class="card-galeria"><img src="A17.jpeg" alt="A17"></div>
-      <div class="card-galeria"><img src="A18.jpeg" alt="A18"></div>
-      <div class="card-galeria"><img src="A19.jpeg" alt="A19"></div>
-      <div class="card-galeria"><img src="A20.jpeg" alt="A20"></div>
-      <div class="card-galeria"><img src="A21.jpeg" alt="A21"></div>
-      <div class="card-galeria"><img src="A22.jpeg" alt="A22"></div>
-      <div class="card-galeria"><img src="A23.jpeg" alt="A23"></div>
-      <div class="card-galeria"><img src="A24.jpeg" alt="A24"></div>
-      <div class="card-galeria"><img src="A25.jpeg" alt="A25"></div>
-      <div class="card-galeria"><img src="A26.jpeg" alt="A26"></div>
-      <div class="card-galeria"><img src="A27.jpeg" alt="A27"></div>
-      <div class="card-galeria"><img src="A28.jpeg" alt="A28"></div>
-      <div class="card-galeria"><img src="A29.jpeg" alt="A29"></div>
-      <div class="card-galeria"><img src="A30.jpeg" alt="A30"></div>
+      <!-- tus imágenes -->
     </div>
     <button class="flecha der">&#10095;</button>
   </div>
 
-  <!-- Lightbox -->
+  <!-- Lightbox con flechas -->
   <div id="lightbox" class="lightbox">
     <span class="cerrar">&times;</span>
-    <img class="lightbox-img" src="" alt="Ampliada">
+    <span id="prevL" class="lightbox-flecha">&#10094;</span>
+    <img class="lightbox-img" src="" alt="Imagen ampliada">
+    <span id="nextL" class="lightbox-flecha">&#10095;</span>
   </div>
 </section>
 
@@ -278,61 +233,62 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
 });
 
-// Slider automático
-const slides = document.querySelectorAll('.fondo-slider img');
-let currentSlide = 0;
-setInterval(() => {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add('active');
-}, 4000);
-
-// Lightbox
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.querySelector('.lightbox-img');
-const cerrar = document.querySelector('.cerrar');
-const galeriaImgs = document.querySelectorAll('.card-galeria img');
-galeriaImgs.forEach(img => {
-  img.addEventListener('click', () => {
-    lightbox.style.display='flex';
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-  });
-});
-cerrar.addEventListener('click', ()=>{ lightbox.style.display='none'; });
-lightbox.addEventListener('click', e => { if(e.target!==lightboxImg) lightbox.style.display='none'; });
-
-// Carrusel infinito + swipe
+// Carrusel infinito + avance de a 5 + autoplay
 const track = document.querySelector('.carrusel-track');
 const btnPrev = document.querySelector('.flecha.izq');
 const btnNext = document.querySelector('.flecha.der');
 let position = 0;
-const cardWidth = track.querySelector('.card-galeria').offsetWidth + 15; // ancho + gap
+const cardWidth = track.querySelector('.card-galeria')?.offsetWidth + 15 || 0;
 const visibleCards = 5;
 const totalCards = track.children.length;
 
-function updateTrack() { track.style.transform = `translateX(-${position*cardWidth}px)`; }
-btnNext.addEventListener('click', ()=>{ position=(position+1)%totalCards; updateTrack(); });
-btnPrev.addEventListener('click', ()=>{ position=(position-1+totalCards)%totalCards; updateTrack(); });
+function updateTrack() {
+  track.style.transform = `translateX(-${position*cardWidth}px)`;
+}
+btnNext.addEventListener('click', ()=>{
+  position = (position + visibleCards) % totalCards;
+  updateTrack();
+});
+btnPrev.addEventListener('click', ()=>{
+  position = (position - visibleCards + totalCards) % totalCards;
+  updateTrack();
+});
+setInterval(()=>{ btnNext.click(); }, 5000);
 
 // Swipe
-let startX = 0, isDown = false;
-track.addEventListener('mousedown', e=>{ isDown=true; startX=e.pageX; });
-track.addEventListener('mouseup', e=>{ isDown=false; });
-track.addEventListener('mouseleave', e=>{ isDown=false; });
-track.addEventListener('mousemove', e=>{
-  if(!isDown) return;
-  const dx=e.pageX-startX;
-  if(dx>30){ btnPrev.click(); startX=e.pageX; }
-  if(dx<-30){ btnNext.click(); startX=e.pageX; }
-});
-// Touch para móviles
+let startX = 0;
 track.addEventListener('touchstart', e=>{ startX=e.touches[0].pageX; });
 track.addEventListener('touchmove', e=>{
   const dx=e.touches[0].pageX-startX;
   if(dx>30){ btnPrev.click(); startX=e.touches[0].pageX; }
   if(dx<-30){ btnNext.click(); startX=e.touches[0].pageX; }
 });
+
+// Lightbox con flechas
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const cerrar = document.querySelector('.cerrar');
+const galeriaImgs = document.querySelectorAll('.card-galeria img');
+let currentIndex = 0;
+
+galeriaImgs.forEach((img, i) => {
+  img.addEventListener('click', () => {
+    lightbox.style.display='flex';
+    lightboxImg.src = img.src;
+    currentIndex = i;
+  });
+});
+cerrar.addEventListener('click', ()=>{ lightbox.style.display='none'; });
+document.getElementById('nextL').addEventListener('click', ()=>{
+  currentIndex = (currentIndex + 1) % galeriaImgs.length;
+  lightboxImg.src = galeriaImgs[currentIndex].src;
+});
+document.getElementById('prevL').addEventListener('click', ()=>{
+  currentIndex = (currentIndex - 1 + galeriaImgs.length) % galeriaImgs.length;
+  lightboxImg.src = galeriaImgs[currentIndex].src;
+});
+lightbox.addEventListener('click', e => { if(e.target===lightbox) lightbox.style.display='none'; });
 </script>
 </body>
 </html>
+
